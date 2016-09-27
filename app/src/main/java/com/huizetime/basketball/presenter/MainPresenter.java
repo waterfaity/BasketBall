@@ -1,7 +1,7 @@
 package com.huizetime.basketball.presenter;
 
 import android.app.Activity;
-import android.graphics.Paint;
+import android.util.Log;
 
 import com.huizetime.basketball.activity.MainActivity;
 import com.huizetime.basketball.bean.tv.TVData;
@@ -21,9 +21,12 @@ import java.util.List;
  */
 public class MainPresenter implements MainPresenterListener, ConnectManager.UserConnectListener {
 
+    private static final String TAG = "mainPresenter";
     private MainView mView;
     private Activity mActivity;
     private MainModel mModel;
+
+    private int mResultCode = TVData.RESULT_OK;
 
 
     public MainPresenter(MainActivity activity) {
@@ -44,22 +47,22 @@ public class MainPresenter implements MainPresenterListener, ConnectManager.User
 
     @Override
     public void onConnectSuccess() {
-
+        Log.i(TAG, "user 连接成功");
     }
 
     @Override
     public void onConnecting() {
-
+        Log.i(TAG, "user 连接中");
     }
 
     @Override
     public void onDisconnect() {
-
+        Log.i(TAG, "user 连接断开");
     }
 
     @Override
     public void onConnectError() {
-
+        Log.i(TAG, "user 连接错误");
     }
 
     @Override
@@ -68,8 +71,13 @@ public class MainPresenter implements MainPresenterListener, ConnectManager.User
     }
 
     @Override
+    public void onRead(byte[] bytes, int len) {
+
+    }
+
+    @Override
     public void setWatchInfo() {
-        mModel.sendWatchInfo("上海圣杯之战", "梦之队", "星之队");
+        mModel.sendWatchInfo(100, "上海圣杯之战", "梦之队", "星之队");
     }
 
     @Override
@@ -117,7 +125,7 @@ public class MainPresenter implements MainPresenterListener, ConnectManager.User
         bEntity.setScore(65);
         bEntity.setStopTime(6);
 
-        mModel.sendMainInfo(aEntity, bEntity, 2, 11 * 6);
+        mModel.sendScoreInfo(aEntity, bEntity, 2, 11 * 6);
 
     }
 
@@ -129,6 +137,7 @@ public class MainPresenter implements MainPresenterListener, ConnectManager.User
     @Override
     public void close() {
         mModel.close();
+        mModel.initData();
     }
 
 }

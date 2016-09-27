@@ -87,11 +87,11 @@ public class BTManager {
         return btManager;
     }
 
-    private BTManager initBTAdapter() {
+    public BTManager initBTAdapter() {
         if (bTAdapter == null) {
             bTAdapter = BluetoothAdapter.getDefaultAdapter();
             openBT();
-            initReceiver();
+//            initReceiver();
         }
         return btManager;
     }
@@ -517,6 +517,7 @@ public class BTManager {
         }
 
         private void setClosed() {
+            Log.i(TAG, "ConnectThread: disconnect ");
             if (type == SERVER) {
                 serverConnected = false;
                 serverConnectListener.onDisconnect();

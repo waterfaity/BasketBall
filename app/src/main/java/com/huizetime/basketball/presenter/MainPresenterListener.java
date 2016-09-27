@@ -19,4 +19,5 @@ public interface MainPresenterListener {
     void change();
 
     void close();
+
 }

@@ -12,13 +12,18 @@ public class TVData {
     public final static int TYPE_B_LOGO = 5;//b球队图标
     public final static int TYPE_QR_CODE = 6;//二维码
     public final static int TYPE_CLOSE = -1;//手动关闭连接
+    public final static int TYPE_RESULT = 8;
+
+    public final static int RESULT_OK = 1;//回执:成功
+    public final static int RESULT_ERROR = 2;//回执:失败
+    public final static int RESULT_WAITING = 3;//回执:请等候
 
     /**
      * 请求code
      * 1.签到显示
      * 2.初始化比分界面
      * 3.比分界面改变
-     * <p/>
+     * <p>
      * 4.a球队图标
      * 5.b球队图标
      * 6.二维码
@@ -28,6 +33,15 @@ public class TVData {
     private TVScoreBean tvScoreBean;//记分板总计得分显示(初始化)
     private TVSignBean tvSignBean;//签到数据
     private String img;//图片资源 base64
+    private int result;//返回结果
+
+    public int getResult() {
+        return result;
+    }
+
+    public void setResult(int result) {
+        this.result = result;
+    }
 
     public TVScoreBean getTvScoreBean() {
         return tvScoreBean;

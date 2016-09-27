@@ -15,7 +15,7 @@ public interface MainModel {
     void connect(MainPresenter mainPresenter);
 
     //发送比赛信息
-    void sendWatchInfo(String watchName, String aTeamName, String bTeamName);
+    void sendWatchInfo(int watchId, String watchName, String aTeamName, String bTeamName);
 
     //发送图片
     void sendImg(int type, String path);
@@ -24,7 +24,7 @@ public interface MainModel {
     void sendSign(TVSignBean.Entity aEntity, TVSignBean.Entity bEntity);
 
     //发送记分板信息
-    void sendMainInfo(TVScoreBean.Entity aEntity, TVScoreBean.Entity bEntity, int segment, int time);
+    void sendScoreInfo(TVScoreBean.Entity aEntity, TVScoreBean.Entity bEntity, int segment, int time);
 
     //发送事件
     void sendChange(int which, int type, int data);

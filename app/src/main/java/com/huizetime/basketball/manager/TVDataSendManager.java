@@ -7,17 +7,25 @@ import com.huizetime.basketball.bean.tv.TVSignBean;
 import com.huizetime.basketball.utils.Base64Utils;
 import com.huizetime.basketball.utils.JsonUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 /**
  * Created by water_fairy on 2016/9/22.
  */
-public class TVDataManager {
+public class TVDataSendManager {
+
+    private List<String> sendList;//存放发送数据列表
+    private int resultCode;
     private BTManager btManager;
+    private int watchId;
     private String watchName;
     private String aTeamName;
     private String bTeamName;
 
 
-    public TVDataManager setBTeamName(String bTeamName) {
+    public TVDataSendManager setBTeamName(String bTeamName) {
         this.bTeamName = bTeamName;
         return this;
     }
@@ -49,6 +57,12 @@ public class TVDataManager {
         tvData.setCode(TVData.TYPE_SIGN);
         TVSignBean tvSignBean = new TVSignBean();
         tvSignBean.setMatchName(watchName);
+        if (aEntity == null) {
+            aEntity = tvSignBean.new Entity();
+        }
+        if (bEntity == null) {
+            bEntity = tvSignBean.new Entity();
+        }
         aEntity.setTeamName(aTeamName);
         tvSignBean.setEntityA(aEntity);
         bEntity.setTeamName(bTeamName);
@@ -100,6 +114,7 @@ public class TVDataManager {
         tvScoreEventBean.setType(type);
         tvScoreEventBean.setData(data);
         tvScoreEventBean.setExtraData(extraData);
+        tvData.setTvScoreEventBean(tvScoreEventBean);
         writeData(tvData);
     }
 
@@ -108,6 +123,7 @@ public class TVDataManager {
         TVData tvData = new TVData();
         tvData.setCode(TVData.TYPE_CLOSE);
         writeData(tvData);
+        btManager.close();
 
     }
 
@@ -118,6 +134,14 @@ public class TVDataManager {
         btManager.writeMsgFromUser(json.getBytes());
     }
 
+    public int getWatchId() {
+        return watchId;
+    }
+
+    public TVDataSendManager setWatchId(int watchId) {
+        this.watchId = watchId;
+        return this;
+    }
 
     public String getBTeamName() {
         return bTeamName;
@@ -127,7 +151,7 @@ public class TVDataManager {
         return aTeamName;
     }
 
-    public TVDataManager setATeamName(String aTeamName) {
+    public TVDataSendManager setATeamName(String aTeamName) {
         this.aTeamName = aTeamName;
         return this;
     }
@@ -136,13 +160,19 @@ public class TVDataManager {
         return watchName;
     }
 
-    public TVDataManager setWatchName(String watchName) {
+    public TVDataSendManager setWatchName(String watchName) {
         this.watchName = watchName;
         return this;
     }
 
-    public TVDataManager(BTManager btManager) {
+    public TVDataSendManager(BTManager btManager) {
         this.btManager = btManager;
+        sendList = new ArrayList<>();
+    }
+
+
+    public void setResultCode(int result) {
+        resultCode = result;
     }
 
 

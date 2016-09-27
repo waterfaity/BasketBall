@@ -7,9 +7,18 @@ import java.util.List;
  */
 public class TVSignBean {
 
+    private int matchId;
     private String matchName;//赛事名字
     private Entity entityA;//A队
     private Entity entityB;//B队
+
+    public int getMatchId() {
+        return matchId;
+    }
+
+    public void setMatchId(int matchId) {
+        this.matchId = matchId;
+    }
 
     public String getMatchName() {
         return matchName;

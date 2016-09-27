@@ -1,13 +1,8 @@
 package com.huizetime.basketball.application;
 
-import android.app.Application;
-import android.bluetooth.BluetoothDevice;
-
 import com.huizetime.basketball.manager.BTManager;
-import com.huizetime.basketball.manager.TVDataManager;
+import com.huizetime.basketball.manager.TVDataSendManager;
 import com.orm.SugarApp;
-
-import java.util.Deque;
 
 /**
  * Created by water_fairy on 2016/9/22.
@@ -16,7 +11,7 @@ public class MyApp extends SugarApp {
 
     private BTManager btManager;
     private static MyApp myApp;
-    private TVDataManager tvDataManager;
+    private TVDataSendManager tvDataSendManager;
 
     @Override
     public void onCreate() {
@@ -36,11 +31,11 @@ public class MyApp extends SugarApp {
         return btManager;
     }
 
-    public TVDataManager getTVDataManager() {
-        if (tvDataManager == null) {
-            tvDataManager = new TVDataManager(getBTManager());
+    public TVDataSendManager getTVDataManager() {
+        if (tvDataSendManager == null) {
+            tvDataSendManager = new TVDataSendManager(getBTManager());
         }
-        return tvDataManager;
+        return tvDataSendManager;
     }
 
 

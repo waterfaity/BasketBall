@@ -7,9 +7,13 @@ import java.util.Arrays;
 
 /**
  * Created by water_fairy on 2016/9/23.
- *
+ * 用于接收数据  json  形式,
+ * 以  (start-) 开头
+ * 以  (---end) 结束
  */
 public class BTDataTrans {
+
+
     private static final String TAG = "BTDataTrans";
     int len = 6;
     int maxLen = 1024 * 1024 * 10;
@@ -39,6 +43,8 @@ public class BTDataTrans {
                     }
                 }
                 totalLen += hasLen;
+
+
             } else {
                 buffer.put(bytes, 0, hasLen);
                 totalLen += hasLen;

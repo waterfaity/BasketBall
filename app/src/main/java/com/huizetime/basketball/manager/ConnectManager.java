@@ -25,7 +25,6 @@ public class ConnectManager {
     private void initBTManager() {
         if (btManager == null) {
             btManager = MyApp.getApp().getBTManager();
-
         }
     }
 
@@ -82,6 +81,9 @@ public class ConnectManager {
             if (serverListener != null) {
                 serverListener.onRead(bytes, len);
             }
+            if (userListener != null) {
+                userListener.onRead(bytes, len);
+            }
         }
 
         @Override
@@ -111,6 +113,10 @@ public class ConnectManager {
             }
         }
     };
+
+    public void close() {
+        btManager.close();
+    }
 
     //用户端监听
     public interface UserConnectListener {
@@ -143,6 +149,14 @@ public class ConnectManager {
          */
 
         void onWrite(byte[] bytes);
+
+        /**
+         * 读取数据 :主要用于返回结果
+         *
+         * @param bytes
+         * @param len
+         */
+        void onRead(byte[] bytes, int len);
     }
 
     //服务器监听
