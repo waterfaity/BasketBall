@@ -2,10 +2,13 @@ package com.huizetime.basketball.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.huizetime.basketball.R;
+import com.huizetime.basketball.application.MyApp;
 import com.huizetime.basketball.bean.tv.TVData;
 import com.huizetime.basketball.manager.BTManager;
 import com.huizetime.basketball.manager.TVDataSendManager;
@@ -14,22 +17,32 @@ import com.huizetime.basketball.presenter.MainPresenterListener;
 import com.huizetime.basketball.utils.ShareUtils;
 import com.huizetime.basketball.utils.ToastUtils;
 import com.huizetime.basketball.view.MainView;
+import com.huizetime.basketball.widget.BigNumView;
+import com.huizetime.basketball.widget.CourtView;
+import com.huizetime.basketball.widget.NumView;
 
 import java.io.File;
 
-public class MainActivity extends AppCompatActivity implements MainView {
+public class MainActivity extends AppCompatActivity implements MainView, CourtView.OnPointClickListener {
 
     private MainPresenterListener mPresenter;
     private static final String TAG = "main";
     private BTManager mBTManager;
     private String mAddress = "24:0A:64:6F:E0:BE";//一体机
     private TVDataSendManager mTVDataSendManager;
+    private CourtView mCourtView;
+    private NumView mNumView;
+    private BigNumView mBigNumView;
+    private int mWidth;
+    private int num, bigNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        mWidth = displayMetrics.widthPixels;
         initData();
         findView();
         initView();
@@ -44,11 +57,22 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     private void initView() {
-
+        mCourtView.getLayoutParams().height = (int) (mWidth * 15 / (float) 28);
+        mCourtView.setOnPointListener(this);
+        mCourtView.setWidth(28f);
+        mNumView.setResIds(new int[]{
+                R.mipmap.num0, R.mipmap.num1, R.mipmap.num2, R.mipmap.num3, R.mipmap.num4,
+                R.mipmap.num5, R.mipmap.num6, R.mipmap.num7, R.mipmap.num8, R.mipmap.num9});
+        mBigNumView.setResId(new int[]{
+                R.mipmap.num0, R.mipmap.num1, R.mipmap.num2, R.mipmap.num3, R.mipmap.num4,
+                R.mipmap.num5, R.mipmap.num6, R.mipmap.num7, R.mipmap.num8, R.mipmap.num9});
+        mBigNumView.setItemNum(3, 10);
     }
 
     private void findView() {
-
+        mCourtView = (CourtView) findViewById(R.id.court_view);
+        mNumView = (NumView) findViewById(R.id.num_view);
+        mBigNumView = (BigNumView) findViewById(R.id.big_num_view);
     }
 
     private void setData() {
@@ -103,4 +127,20 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
 
+    @Override
+    public void onPointClick(String left, String right, int score) {
+        String content = "left:" + left + " right" + right + " score:" + score;
+        ToastUtils.show(content);
+        Log.i(TAG, "onPointClick: " + content);
+        num++;
+        bigNum+=60;
+        if (num == 10) {
+            num = 0;
+        }
+
+        mNumView.setNum(num, true);
+
+        mBigNumView.setNum(bigNum, true);
+
+    }
 }
