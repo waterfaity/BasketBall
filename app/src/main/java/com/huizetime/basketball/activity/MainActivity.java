@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements MainView, CourtVi
         ToastUtils.show(content);
         Log.i(TAG, "onPointClick: " + content);
         num++;
-        bigNum+=60;
+        bigNum += 60;
         if (num == 10) {
             num = 0;
         }
