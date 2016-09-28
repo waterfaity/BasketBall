@@ -3,7 +3,7 @@ package com.huizetime.basketball.presenter;
 import android.app.Activity;
 import android.util.Log;
 
-import com.huizetime.basketball.activity.MainActivity;
+import com.huizetime.basketball.activity.WatchLoggingActivity;
 import com.huizetime.basketball.bean.tv.TVData;
 import com.huizetime.basketball.bean.tv.TVEventBean;
 import com.huizetime.basketball.bean.tv.TVScoreBean;
@@ -29,7 +29,7 @@ public class MainPresenter implements MainPresenterListener, ConnectManager.User
     private int mResultCode = TVData.RESULT_OK;
 
 
-    public MainPresenter(MainActivity activity) {
+    public MainPresenter(WatchLoggingActivity activity) {
         mView = activity;
         mActivity = activity;
         mModel = new MainModelSimple(this, activity);
@@ -42,7 +42,7 @@ public class MainPresenter implements MainPresenterListener, ConnectManager.User
 
     @Override
     public void connect() {
-        mModel.connect(this);
+        mModel.connect();
     }
 
     @Override
@@ -140,4 +140,8 @@ public class MainPresenter implements MainPresenterListener, ConnectManager.User
         mModel.initData();
     }
 
+    @Override
+    public void back() {
+        mView.back();
+    }
 }

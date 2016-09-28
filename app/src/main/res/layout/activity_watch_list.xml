@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_watch_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.huizetime.basketball.activity.WatchListActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/watch_list_title_bg"
+            android:gravity="center"
+            android:text="比赛列表"
+            android:textColor="@color/white"
+            android:textSize="@dimen/watch_list_title_size" />
+
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/user_icon"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:clickable="true"
+                android:onClick="onClick"
+                android:src="@mipmap/ic_launcher"
+                app:layout_widthPercent="5%" />
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin_half"
+                android:layout_toRightOf="@+id/user_icon"
+                android:gravity="center|left"
+                android:text="独孤求败"
+
+                />
+
+            <ImageView
+                android:id="@+id/connect"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_toLeftOf="@+id/upload"
+                android:clickable="true"
+                android:onClick="onClick"
+                android:src="@mipmap/ic_launcher"
+                app:layout_widthPercent="5%" />
+
+            <ImageView
+                android:id="@+id/upload"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_toLeftOf="@+id/search"
+                android:clickable="true"
+                android:onClick="onClick"
+                android:src="@mipmap/ic_launcher"
+                app:layout_widthPercent="5%" />
+
+            <ImageView
+                android:id="@+id/search"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:clickable="true"
+                android:onClick="onClick"
+                android:src="@mipmap/ic_launcher"
+                app:layout_widthPercent="5%" />
+        </android.support.percent.PercentRelativeLayout>
+
+
+        <include layout="@layout/pull_list_view" />
+
+    </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

@@ -12,7 +12,7 @@ public interface MainModel {
     void initData();
 
     //作为用户端连接
-    void connect(MainPresenter mainPresenter);
+    void connect();
 
     //发送比赛信息
     void sendWatchInfo(int watchId, String watchName, String aTeamName, String bTeamName);

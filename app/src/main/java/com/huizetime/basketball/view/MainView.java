@@ -5,4 +5,5 @@ package com.huizetime.basketball.view;
  */
 public interface MainView {
 
+    void back();
 }

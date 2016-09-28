@@ -192,4 +192,10 @@ public class ConnectManager {
 
         void onRead(byte[] bytes, int len);
     }
+    public boolean isUserConnect(){
+        return btManager.isUserConnected();
+    }
+    public boolean isServerConnect(){
+        return btManager.isServerConnected();
+    }
 }

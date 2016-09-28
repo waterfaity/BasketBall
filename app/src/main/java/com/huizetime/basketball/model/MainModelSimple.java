@@ -38,8 +38,7 @@ public class MainModelSimple implements MainModel {
 
     @Override
     public void initData() {
-        //初始化权限
-        PermissionUtils.requestPermission(mActivity, PermissionUtils.REQUEST_LOCATION);
+
         //初始化蓝牙连接管理
         mConnectManager = ConnectManager.getInstance();
         //初始化数据传输管理
@@ -49,7 +48,7 @@ public class MainModelSimple implements MainModel {
     }
 
     @Override
-    public void connect(MainPresenter mainPresenter) {
+    public void connect() {
         String address = ShareUtils.getBTAddress();
         if (TextUtils.isEmpty(address)) {
             ToastUtils.show("未设置蓝牙地址");

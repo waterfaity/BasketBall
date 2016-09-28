@@ -3,7 +3,7 @@ package com.huizetime.basketball.presenter;
 /**
  * Created by water_fairy on 2016/9/26.
  */
-public interface MainPresenterListener {
+public interface MainPresenterListener extends BasePresenter{
     void initData();
 
     void connect();

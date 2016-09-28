@@ -4,4 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="black_33">#33000000</color>
+    <color name="watch_list_title_bg">#55000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="bg_load_more">#aaaaaa</color>
+    <color name="bg_fresh">#6593cb</color>
 </resources>

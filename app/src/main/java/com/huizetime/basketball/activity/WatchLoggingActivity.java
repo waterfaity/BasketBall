@@ -16,6 +16,7 @@ import com.huizetime.basketball.presenter.MainPresenter;
 import com.huizetime.basketball.presenter.MainPresenterListener;
 import com.huizetime.basketball.utils.ShareUtils;
 import com.huizetime.basketball.utils.ToastUtils;
+import com.huizetime.basketball.utils.ToolbarUtils;
 import com.huizetime.basketball.view.MainView;
 import com.huizetime.basketball.widget.BigNumView;
 import com.huizetime.basketball.widget.CourtView;
@@ -23,7 +24,7 @@ import com.huizetime.basketball.widget.NumView;
 
 import java.io.File;
 
-public class MainActivity extends AppCompatActivity implements MainView, CourtView.OnPointClickListener {
+public class WatchLoggingActivity extends AppCompatActivity implements MainView, CourtView.OnPointClickListener {
 
     private MainPresenterListener mPresenter;
     private static final String TAG = "main";
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements MainView, CourtVi
         findView();
         initView();
         setData();
+        ToolbarUtils.init(this, R.string.watch_log, mPresenter);
     }
 
     private void initData() {
@@ -142,5 +144,10 @@ public class MainActivity extends AppCompatActivity implements MainView, CourtVi
 
         mBigNumView.setNum(bigNum, true);
 
+    }
+
+    @Override
+    public void back() {
+        finish();
     }
 }
