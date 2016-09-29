@@ -15,6 +15,8 @@ public class PlayerInfoDB extends SugarRecord {
     public static final int CENTER = 5;         //中锋    Center
 
 
+    @Column(unique = false, name = "teamId")
+    private int teamId;
     @Column(unique = false, name = "playerId")
     private int playerId;
     @Column(unique = false, name = "name")
@@ -25,6 +27,8 @@ public class PlayerInfoDB extends SugarRecord {
     private int position;
     @Column(unique = false, name = "gender")
     private boolean gender;
+    @Column(unique = false, name = "logTime")
+    private long logTime;
 
     public int getPlayerId() {
         return playerId;

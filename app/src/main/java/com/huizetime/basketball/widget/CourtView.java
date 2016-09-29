@@ -122,7 +122,7 @@ public class CourtView extends RelativeLayout {
     }
 
     /**
-     * 实际宽度
+     * 实际宽度(米/英尺)
      *
      * @param width
      */

@@ -90,8 +90,10 @@ public class BTManager {
     public BTManager initBTAdapter() {
         if (bTAdapter == null) {
             bTAdapter = BluetoothAdapter.getDefaultAdapter();
-            openBT();
 //            initReceiver();
+        }
+        if (!bTAdapter.isEnabled()){
+            openBT();
         }
         return btManager;
     }
@@ -132,6 +134,7 @@ public class BTManager {
         intentFilter.addAction(BluetoothAdapter.ACTION_LOCAL_NAME_CHANGED);
         intentFilter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
         intentFilter.addAction(BluetoothDevice.ACTION_FOUND);
+        intentFilter.addAction("android.bluetooth.device.action.ACL_DISCONNECT_REQUESTED");
         context.registerReceiver(bTReceiver, intentFilter);
     }
 
@@ -404,9 +407,6 @@ public class BTManager {
 
     //连接监听  成功/失败/读/写
     public interface OnConnectListener {
-        /**
-         * 连接成功
-         */
         void onSuccess();
 
         /**
@@ -419,27 +419,14 @@ public class BTManager {
          */
         void onConnecting();
 
-        /**
-         * 读取监听
-         *
-         * @param bytes
-         * @param len
-         */
         void onRead(byte[] bytes, int len);
 
 //        void onReadOver();
 
-        /**
-         * 写入监听
-         *
-         * @param bytes
-         */
         void onWrite(byte[] bytes);
 
-        //失败
         void onFailed();
 
-        //连接断开
         void onDisconnect();
     }
 
@@ -489,7 +476,7 @@ public class BTManager {
                 try {
                     if (socket.isConnected()) {
                         len = inputStream.read(buffer);
-                        Log.i(TAG, "run: 读取长度: " + len);
+//                        Log.i(TAG, "run: 读取长度: " + len);
                         if (len != 0) {
                             if (type == SERVER) {
                                 serverConnectListener.onRead(buffer, len);
@@ -517,7 +504,6 @@ public class BTManager {
         }
 
         private void setClosed() {
-            Log.i(TAG, "ConnectThread: disconnect ");
             if (type == SERVER) {
                 serverConnected = false;
                 serverConnectListener.onDisconnect();

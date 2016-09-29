@@ -21,10 +21,10 @@ public class WatchListAdapter extends BaseAdapter {
     private OnItemClickListener mListener;
 
 
-    public WatchListAdapter(List<WatchBean> mList, Context mContext,OnItemClickListener onItemClickListenerListener) {
+    public WatchListAdapter(List<WatchBean> mList, Context mContext, OnItemClickListener onItemClickListenerListener) {
         this.mList = mList;
         this.mContext = mContext;
-        this.mListener =onItemClickListenerListener;
+        this.mListener = onItemClickListenerListener;
     }
 
     @Override
@@ -53,7 +53,16 @@ public class WatchListAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_watch_list, parent, false);
             convertView.setTag(new ViewHolder(convertView));
         }
+        WatchBean watchBean = mList.get(position);
         mViewHolder = (ViewHolder) convertView.getTag();
+        mViewHolder.mView.setTag(watchBean);
+        mViewHolder.mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WatchBean entity = (WatchBean) v.getTag();
+                mListener.onItemClick(entity.getId(), entity.getType());
+            }
+        });
         return convertView;
     }
 
@@ -62,7 +71,7 @@ public class WatchListAdapter extends BaseAdapter {
         private View mView;
 
         public ViewHolder(View convertView) {
-            mView = convertView;
+            mView = convertView.findViewById(R.id.root_view);
         }
     }
 

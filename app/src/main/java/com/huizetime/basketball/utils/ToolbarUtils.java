@@ -30,7 +30,7 @@ public class ToolbarUtils {
         title.setText(context.getResources().getText(titleId));
         toolbar.setTitle("");
         compatActivity.setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.mipmap.ic_launcher);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

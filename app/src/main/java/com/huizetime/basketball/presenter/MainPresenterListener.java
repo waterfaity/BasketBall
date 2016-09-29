@@ -1,23 +1,24 @@
 package com.huizetime.basketball.presenter;
 
+import com.huizetime.basketball.bean.tv.TVScoreBean;
+import com.huizetime.basketball.bean.tv.TVSignBean;
+
 /**
  * Created by water_fairy on 2016/9/26.
  */
 public interface MainPresenterListener extends BasePresenter{
     void initData();
 
-    void connect();
 
     void setWatchInfo();
 
-    void sendImg(int type, String path);
+    void sendImg();
 
     void sendSign();
 
     void sendScore();
 
-    void change();
+    void change(int which, int type, int data);
 
-    void close();
 
 }

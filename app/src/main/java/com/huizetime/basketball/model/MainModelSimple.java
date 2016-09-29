@@ -39,8 +39,6 @@ public class MainModelSimple implements MainModel {
     @Override
     public void initData() {
 
-        //初始化蓝牙连接管理
-        mConnectManager = ConnectManager.getInstance();
         //初始化数据传输管理
         mTVDataSendManager = new TVDataSendManager(MyApp.getApp().getBTManager());
         //数据接收转换器
@@ -49,60 +47,46 @@ public class MainModelSimple implements MainModel {
 
     @Override
     public void connect() {
-        String address = ShareUtils.getBTAddress();
-        if (TextUtils.isEmpty(address)) {
-            ToastUtils.show("未设置蓝牙地址");
-        } else {
-            BluetoothDevice device = MyApp.getApp().getBTManager()
-                    .initBTAdapter()
-                    .getBTAdapter()
-                    .getRemoteDevice(address);
-            mConnectManager.setUserListener(new ConnectManager.UserConnectListener() {
-                @Override
-                public void onConnectSuccess() {
-                    mPresenter.onConnectSuccess();
-                }
-
-                @Override
-                public void onConnecting() {
-                    mPresenter.onConnecting();
-
-                }
-
-                @Override
-                public void onDisconnect() {
-                    mPresenter.onDisconnect();
-
-                }
-
-                @Override
-                public void onConnectError() {
-                    mPresenter.onConnectError();
-
-                }
-
-                @Override
-                public void onWrite(byte[] bytes) {
-                    mPresenter.onWrite(bytes);
-                }
-
-                @Override
-                public void onRead(byte[] bytes, int len) {
-                    String json = TVDataReceiveUtils.receive(mBTDataTrans, bytes, len);
-                    Log.i(TAG, "onRead: "+json);
-                    if (json != null) {
-                        TVData tvData = new Gson().fromJson(json, TVData.class);
-                        if (tvData.getCode() == TVData.TYPE_RESULT) {
-                            Log.i(TAG, "onRead: resultCode " + tvData.getResult());
-                            mTVDataSendManager.setResultCode(tvData.getResult());
-                        }
-                    }
-                }
-            });
-            mConnectManager.setAsUser(device);
-
-        }
-
+//            mConnectManager.setUserListener(new ConnectManager.UserConnectListener() {
+//                @Override
+//                public void onConnectSuccess() {
+//                    mPresenter.onConnectSuccess();
+//                }
+//
+//                @Override
+//                public void onConnecting() {
+//
+//                }
+//
+//                @Override
+//                public void onDisconnect() {
+//                    mPresenter.onDisconnect();
+//
+//                }
+//
+//                @Override
+//                public void onConnectError() {
+//
+//                }
+//
+//                @Override
+//                public void onWrite(byte[] bytes) {
+//                    mPresenter.onWrite(bytes);
+//                }
+//
+//                @Override
+//                public void onRead(byte[] bytes, int len) {
+//                    String json = TVDataReceiveUtils.receive(mBTDataTrans, bytes, len);
+//                    Log.i(TAG, "onRead: "+json);
+//                    if (json != null) {
+//                        TVData tvData = new Gson().fromJson(json, TVData.class);
+//                        if (tvData.getCode() == TVData.TYPE_RESULT) {
+//                            Log.i(TAG, "onRead: resultCode " + tvData.getResult());
+//                            mTVDataSendManager.setResultCode(tvData.getResult());
+//                        }
+//                    }
+//                }
+//            });
     }
 
     @Override

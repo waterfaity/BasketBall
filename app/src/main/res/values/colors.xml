@@ -9,4 +9,7 @@
     <color name="black">#000000</color>
     <color name="bg_load_more">#aaaaaa</color>
     <color name="bg_fresh">#6593cb</color>
+    <color name="search_bg">#ECF1FA</color>
+    <color name="faul">#FF0000</color>
+    <color name="pause">#00FF00</color>
 </resources>

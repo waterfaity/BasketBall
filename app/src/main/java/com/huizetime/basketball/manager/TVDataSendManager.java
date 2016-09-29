@@ -167,7 +167,6 @@ public class TVDataSendManager {
 
     public TVDataSendManager(BTManager btManager) {
         this.btManager = btManager;
-        sendList = new ArrayList<>();
     }
 
 

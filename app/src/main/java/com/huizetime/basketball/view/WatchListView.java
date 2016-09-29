@@ -1,5 +1,7 @@
 package com.huizetime.basketball.view;
 
+import android.widget.RelativeLayout;
+
 import com.huizetime.basketball.bean.WatchBean;
 
 import java.util.List;
@@ -83,4 +85,26 @@ public interface WatchListView {
      */
 
     void jumpToActivityFromMenu(Class aClass);
+
+    boolean isConnect();
+
+    void setConnect(boolean connect);
+
+    void stopLoading();
+
+    RelativeLayout getSearchBar();
+
+    RelativeLayout getSearchLayout();
+
+    boolean isSearchBarVisibility();
+
+    void setSearchBarVisibility(boolean searchBarVisibility);
+
+    void back();
+
+    String getSearchContent();
+
+    void OnSearchResult(List<WatchBean> list);
+
+    void initSearchLayout();
 }

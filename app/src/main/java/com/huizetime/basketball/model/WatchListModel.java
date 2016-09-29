@@ -9,4 +9,8 @@ public interface WatchListModel {
     void initData();
 
     void connect();
+
+    void shutDownConnect();
+
+    void search(String searchContent);
 }

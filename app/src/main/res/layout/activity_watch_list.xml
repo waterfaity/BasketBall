@@ -34,7 +34,7 @@
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:clickable="true"
                 android:onClick="onClick"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/ic_account_box_black_24dp"
                 app:layout_widthPercent="5%" />
 
             <TextView
@@ -55,7 +55,7 @@
                 android:layout_toLeftOf="@+id/upload"
                 android:clickable="true"
                 android:onClick="onClick"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/ic_bluetooth_disabled_black_24dp"
                 app:layout_widthPercent="5%" />
 
             <ImageView
@@ -65,7 +65,7 @@
                 android:layout_toLeftOf="@+id/search"
                 android:clickable="true"
                 android:onClick="onClick"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/ic_cloud_upload_black_24dp"
                 app:layout_widthPercent="5%" />
 
             <ImageView
@@ -76,12 +76,25 @@
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:clickable="true"
                 android:onClick="onClick"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/ic_search_black_24dp"
                 app:layout_widthPercent="5%" />
+
+            <include
+                android:id="@+id/search_bar"
+                layout="@layout/search_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:visibility="gone" />
         </android.support.percent.PercentRelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <include layout="@layout/pull_list_view" />
+            <include layout="@layout/pull_list_view" />
+
+            <include layout="@layout/search_layout" />
+        </RelativeLayout>
 
     </LinearLayout>
 

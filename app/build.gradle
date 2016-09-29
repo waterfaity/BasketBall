@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.huizetime.basketball"
-        minSdkVersion 17
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -21,12 +21,13 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
+    compile files('libs/zixing-core-3.2.0.jar')
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
     compile 'com.google.code.gson:gson:2.4'
     compile 'com.github.satyan:sugar:1.4'
     compile 'org.xutils:xutils:3.3.36'
-    compile 'com.android.support:percent:23.3.0'
-    compile files('libs/zixing-core-3.2.0.jar')
+    compile 'com.android.support:percent:23.4.0'
+    compile 'com.android.support:support-v4:23.4.0'
+    testCompile 'junit:junit:4.12'
 }

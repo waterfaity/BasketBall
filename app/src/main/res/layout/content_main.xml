@@ -9,80 +9,240 @@
     tools:context=".activity.WatchLoggingActivity"
     tools:showIn="@layout/activity_main">
 
-    <LinearLayout
+    <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
+        <!--队伍名字,比分,时间,小节-->
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/percent_1"
+            android:layout_width="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="#11000000"
+            app:layout_heightPercent="7.45%">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="connect"
-            android:text="connect" />
+            <TextView
+                android:gravity="center"
+                android:text="梦之队"
+                app:layout_widthPercent="19.84%" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="close"
-            android:text="close" />
+            <com.huizetime.basketball.widget.BigNumView
+                android:layout_toLeftOf="@+id/percent_1_3"
+                app:layout_widthPercent="14.81%" />
 
-        <Button
-            android:id="@+id/send_watch_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClick"
-            android:text="send_watch_info" />
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/percent_1_3"
+                android:layout_centerInParent="true"
+                app:layout_widthPercent="30.70%">
 
-        <Button
-            android:id="@+id/send_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClick"
-            android:text="send_img" />
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:text="第一节"
+                    app:layout_widthPercent="38.51%" />
 
-        <Button
-            android:id="@+id/send_sign"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClick"
-            android:text="send_sign" />
+                <TextView
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:text="12:00"
+                    app:layout_widthPercent="61.49%" />
+            </android.support.percent.PercentRelativeLayout>
 
-        <Button
-            android:id="@+id/send_score_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClick"
-            android:text="send_score_info" />
+            <com.huizetime.basketball.widget.BigNumView
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/percent_1_3"
+                android:layout_toRightOf="@+id/percent_1_3"
+                app:layout_widthPercent="14.81%" />
 
-        <Button
-            android:id="@+id/send_chang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClick"
-            android:text="send_chang" />
+            <TextView
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:text="梦之队"
+                app:layout_widthPercent="19.84%" />
+        </android.support.percent.PercentRelativeLayout>
+        <!--logo,犯规,暂停,比赛状态-->
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/percent_2"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/percent_1"
+            android:background="#22000000"
+            app:layout_heightPercent="5.08%">
+
+            <LinearLayout
+
+                android:gravity="center_vertical"
+                app:layout_widthPercent="35%">
+
+                <ImageView
+                    android:id="@+id/a_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:src="@drawable/ball" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/activity_horizontal_margin_half"
+                            android:text="犯规" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="12"
+                            android:textColor="@color/faul" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/activity_horizontal_margin_half"
+                            android:text="犯规" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="45"
+                            android:textColor="@color/pause" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_alignParentRight="true"
+                android:gravity="center_vertical|right"
+                app:layout_widthPercent="35%">
 
 
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-        <com.huizetime.basketball.widget.CourtView
-            android:id="@+id/court_view"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="12"
+                            android:textColor="@color/faul" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin_half"
+                            android:text="犯规" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="45"
+                            android:textColor="@color/pause" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin_half"
+                            android:text="犯规" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/b_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:src="@drawable/ball" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="比赛暂停"
+                app:layout_widthPercent="21.41%" />
+
+        </android.support.percent.PercentRelativeLayout>
+        <!--实时消息 1,2-->
+        <android.support.percent.PercentRelativeLayout
+
+            android:id="@+id/percent_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@mipmap/court_bg" />
-    </LinearLayout>
+            android:layout_below="@+id/percent_2"
+            android:background="#33000000"
+            app:layout_heightPercent="10.16%">
 
-    <com.huizetime.basketball.widget.NumView
-        android:id="@+id/num_view"
-        android:layout_width="wrap_content"
-        android:layout_height="107px" />
-    <com.huizetime.basketball.widget.BigNumView
-        android:id="@+id/big_num_view"
-        android:layout_width="wrap_content"
-        android:layout_height="107px" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.percent.PercentRelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/percent_4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/percent_3"
+            android:orientation="vertical">
+            <!--球场-->
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.huizetime.basketball.widget.CourtView
+                    android:id="@+id/court_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/court_bg" />
+            </LinearLayout>
+            <!--fragment-->
+            <FrameLayout
+                android:id="@+id/frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/percent_4"
+                android:background="#44000000" />
+
+        </LinearLayout>
+
+
+    </android.support.percent.PercentRelativeLayout>
 
 
 </LinearLayout>

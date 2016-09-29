@@ -1,5 +1,8 @@
 package com.huizetime.basketball.presenter;
 
+import com.huizetime.basketball.bean.WatchBean;
+
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -22,8 +25,6 @@ public interface WatchListPresenterListener {
 
     void connect();
 
-    void disconnect();
-
     void onConnectError();
 
     void onDisconnect();
@@ -35,4 +36,14 @@ public interface WatchListPresenterListener {
     void setBlueToothAddress();
 
     void shutDownConnect();
+
+    void onSearchClick();
+
+    void onSearchBackClick();
+
+    void quit();
+
+    void onSearch();
+
+    void searchResult(List<WatchBean> list);
 }

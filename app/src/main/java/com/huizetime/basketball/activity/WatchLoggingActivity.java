@@ -1,15 +1,20 @@
 package com.huizetime.basketball.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.huizetime.basketball.R;
 import com.huizetime.basketball.application.MyApp;
 import com.huizetime.basketball.bean.tv.TVData;
+import com.huizetime.basketball.fragment.BaseFragment;
 import com.huizetime.basketball.manager.BTManager;
 import com.huizetime.basketball.manager.TVDataSendManager;
 import com.huizetime.basketball.presenter.MainPresenter;
@@ -28,14 +33,11 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
 
     private MainPresenterListener mPresenter;
     private static final String TAG = "main";
-    private BTManager mBTManager;
-    private String mAddress = "24:0A:64:6F:E0:BE";//一体机
-    private TVDataSendManager mTVDataSendManager;
-    private CourtView mCourtView;
-    private NumView mNumView;
-    private BigNumView mBigNumView;
-    private int mWidth;
-    private int num, bigNum;
+    private int[] numRes = new int[]{};
+
+    private CourtView mCourtView;//球场
+    private BigNumView mBNScore1, mBNScore2;//得分
+    private int mWidth;//屏幕宽
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,29 +54,21 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
     }
 
     private void initData() {
-        ShareUtils.getSetting().edit().putString("address", mAddress).apply();
-        mBTManager = BTManager.getInstance();
+
         mPresenter = new MainPresenter(this);
         mPresenter.initData();
+        BaseFragment.init(this);
     }
 
     private void initView() {
+        //设置球场  比例: 15/28
         mCourtView.getLayoutParams().height = (int) (mWidth * 15 / (float) 28);
         mCourtView.setOnPointListener(this);
         mCourtView.setWidth(28f);
-        mNumView.setResIds(new int[]{
-                R.mipmap.num0, R.mipmap.num1, R.mipmap.num2, R.mipmap.num3, R.mipmap.num4,
-                R.mipmap.num5, R.mipmap.num6, R.mipmap.num7, R.mipmap.num8, R.mipmap.num9});
-        mBigNumView.setResId(new int[]{
-                R.mipmap.num0, R.mipmap.num1, R.mipmap.num2, R.mipmap.num3, R.mipmap.num4,
-                R.mipmap.num5, R.mipmap.num6, R.mipmap.num7, R.mipmap.num8, R.mipmap.num9});
-        mBigNumView.setItemNum(3, 10);
     }
 
     private void findView() {
         mCourtView = (CourtView) findViewById(R.id.court_view);
-        mNumView = (NumView) findViewById(R.id.num_view);
-        mBigNumView = (BigNumView) findViewById(R.id.big_num_view);
     }
 
     private void setData() {
@@ -83,49 +77,6 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
 
 
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.send_watch_info:
-                mPresenter.setWatchInfo();
-                break;
-            case R.id.send_sign:
-                mPresenter.sendSign();
-                break;
-            case R.id.send_score_info:
-                mPresenter.sendScore();
-                break;
-            case R.id.send_chang:
-                mPresenter.change();
-                break;
-            case R.id.send_img:
-                File file = new File("/sdcard/jj.jpg");
-                if (file.exists()) {
-                    mPresenter.sendImg(TVData.TYPE_QR_CODE, "/sdcard/jj.jpg");
-                } else {
-                    ToastUtils.show("图片未找到");
-                }
-                break;
-        }
-    }
-
-    public void close(View view) {
-
-        if (mBTManager != null && mBTManager.isUserConnected()) {
-            mPresenter.close();
-        } else {
-            Log.i(TAG, "close: 已断开");
-        }
-
-
-    }
-
-    public void connect(View view) {
-
-
-        if (mBTManager != null && mBTManager.isUserConnected()) {
-            Log.i(TAG, "close: 已连接,无需重置");
-        } else {
-            mPresenter.connect();
-        }
     }
 
 
@@ -134,20 +85,57 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
         String content = "left:" + left + " right" + right + " score:" + score;
         ToastUtils.show(content);
         Log.i(TAG, "onPointClick: " + content);
-        num++;
-        bigNum += 60;
-        if (num == 10) {
-            num = 0;
-        }
-
-        mNumView.setNum(num, true);
-
-        mBigNumView.setNum(bigNum, true);
 
     }
 
     @Override
     public void back() {
+
         finish();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            mPresenter.back();
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
+    public MainPresenterListener getPresenter() {
+        return mPresenter;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0, Menu.FIRST, 1, R.string.sign)
+                .setIcon(R.drawable.ic_account_box_black_24dp)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        menu.add(0, Menu.FIRST + 1, 2, R.string.watch_info)
+                .setIcon(R.drawable.ic_backup_black_24dp)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == Menu.FIRST) {
+            toSign();
+        } else {
+            toWatchInfo();
+        }
+        return false;
+    }
+
+    private void toWatchInfo() {
+        Intent intent = new Intent(this, WatchInfoActivity.class);
+        startActivity(intent);
+    }
+
+    private void toSign() {
+        Intent intent = new Intent(this, SignActivity.class);
+        startActivity(intent);
     }
 }

@@ -8,9 +8,11 @@ import com.huizetime.basketball.bean.tv.TVData;
 import com.huizetime.basketball.bean.tv.TVEventBean;
 import com.huizetime.basketball.bean.tv.TVScoreBean;
 import com.huizetime.basketball.bean.tv.TVSignBean;
+import com.huizetime.basketball.listener.OnBelClickListener;
 import com.huizetime.basketball.manager.ConnectManager;
 import com.huizetime.basketball.model.MainModel;
 import com.huizetime.basketball.model.MainModelSimple;
+import com.huizetime.basketball.utils.DialogUtils;
 import com.huizetime.basketball.view.MainView;
 
 import java.util.ArrayList;
@@ -40,10 +42,6 @@ public class MainPresenter implements MainPresenterListener, ConnectManager.User
         mModel.initData();
     }
 
-    @Override
-    public void connect() {
-        mModel.connect();
-    }
 
     @Override
     public void onConnectSuccess() {
@@ -81,9 +79,8 @@ public class MainPresenter implements MainPresenterListener, ConnectManager.User
     }
 
     @Override
-    public void sendImg(int type, String path) {
-        mModel.sendImg(type, path);
-
+    public void sendImg() {
+        mModel.sendImg(TVData.TYPE_A_LOGO, "/sdcard/jj.jpg");
     }
 
     @Override
@@ -130,18 +127,23 @@ public class MainPresenter implements MainPresenterListener, ConnectManager.User
     }
 
     @Override
-    public void change() {
+    public void change(int which, int type, int data) {
         mModel.sendChange(TVEventBean.TEAM_A, TVEventBean.SCORE, 26);
     }
 
-    @Override
-    public void close() {
-        mModel.close();
-        mModel.initData();
-    }
 
     @Override
     public void back() {
-        mView.back();
+
+        DialogUtils.show2(mActivity, "是否退出比赛录入界面?", new OnBelClickListener() {
+            @Override
+            public void onBelClick(boolean bel) {
+                if (bel) {
+                    mView.back();
+                }
+            }
+        });
+
+
     }
 }

@@ -13,4 +13,11 @@
     <string name="load_succeed">加载成功</string>
     <string name="load_fail">加载失败</string>
     <string name="watch_log">比赛录入</string>
+    <string name="watch_info">比赛数据</string>
+    <string name="change_pw">修改密码</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign">签到</string>
+    <string name="menu">菜单</string>
 </resources>
