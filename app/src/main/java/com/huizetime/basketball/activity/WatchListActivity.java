@@ -315,7 +315,6 @@ public class WatchListActivity extends AppCompatActivity implements WatchListVie
             mIVSearchClear.setVisibility(View.GONE);
         } else {
             mIVSearchClear.setVisibility(View.VISIBLE);
-
         }
     }
 

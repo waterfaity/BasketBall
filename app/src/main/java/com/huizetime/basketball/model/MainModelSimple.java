@@ -40,7 +40,7 @@ public class MainModelSimple implements MainModel {
     public void initData() {
 
         //初始化数据传输管理
-        mTVDataSendManager = new TVDataSendManager(MyApp.getApp().getBTManager());
+        mTVDataSendManager = MyApp.getApp().getTVDataSendManager();
         //数据接收转换器
         mBTDataTrans = new BTDataTrans();
     }

@@ -73,7 +73,6 @@ public class CourtView extends RelativeLayout {
             trans();
             Log.i(TAG, "onTouchEvent: " + x + "--" + y);
             handleData();
-
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             //抬起
             if (listener != null) {
@@ -82,10 +81,8 @@ public class CourtView extends RelativeLayout {
                         MathUtils.getPoint2(Math.sqrt(z2) / realRadio),
                         score);
             }
-
             return false;
         }
-
         return true;
     }
 
@@ -99,6 +96,7 @@ public class CourtView extends RelativeLayout {
         Log.i(TAG, "篮球场地 : width:" + width + " -- height" + height);
     }
 
+    //点击位置处理
     private void handleData() {
         // (x－a)²+(y－b)²=r²
         // 球篮 :(1.2,7.5)
@@ -113,10 +111,14 @@ public class CourtView extends RelativeLayout {
         }
     }
 
+    //设置点击监听
     public void setOnPointListener(OnPointClickListener listener) {
         this.listener = listener;
     }
 
+    /**
+     * 点击监听接口
+     */
     public interface OnPointClickListener {
         void onPointClick(String left, String right, int score);
     }

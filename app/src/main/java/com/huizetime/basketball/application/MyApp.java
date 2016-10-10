@@ -12,6 +12,12 @@ public class MyApp extends SugarApp {
     private BTManager btManager;
     private static MyApp myApp;
     private TVDataSendManager tvDataSendManager;
+    public static final int PAGE_CONNECT = 1;
+    public static final int PAGE_SIGN = 2;
+    public static final int PAGE_EVENT = 3;
+
+
+    private int mTVCurrentPage = PAGE_CONNECT;
 
     @Override
     public void onCreate() {
@@ -31,12 +37,18 @@ public class MyApp extends SugarApp {
         return btManager;
     }
 
-    public TVDataSendManager getTVDataManager() {
+    public TVDataSendManager getTVDataSendManager() {
         if (tvDataSendManager == null) {
             tvDataSendManager = new TVDataSendManager(getBTManager());
         }
         return tvDataSendManager;
     }
 
+    public int getTVCurrentPage() {
+        return mTVCurrentPage;
+    }
 
+    public void setTVCurrentPage(int mTVCurrentPage) {
+        this.mTVCurrentPage = mTVCurrentPage;
+    }
 }

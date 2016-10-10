@@ -12,6 +12,9 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
+
+import com.huizetime.basketball.R;
 
 /**
  * Created by water_fairy on 2016/9/27.
@@ -21,7 +24,30 @@ public class NumView extends ScrollView implements View.OnTouchListener {
     private int[] resIds;//资源ids
     private LinearLayout linearLayout;//数字插入的位置 垂直布局
     private ImageView priImg, img;//上图,下图
+    private TextView priTV, TV;//上数字,下数字
     private int num;//0~9  设置显示的数据
+    private boolean isImg = true;
+    private Context context;
+    private int height=-1;
+
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public boolean isImg() {
+        return isImg;
+    }
+
+    public void setImg(boolean img) {
+        isImg = img;
+        setContentType(isImg);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
 
     public NumView(Context context) {
         super(context);
@@ -29,6 +55,7 @@ public class NumView extends ScrollView implements View.OnTouchListener {
 
     public NumView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        this.context = context;
         initView(context);
     }
 
@@ -37,13 +64,43 @@ public class NumView extends ScrollView implements View.OnTouchListener {
         setVerticalScrollBarEnabled(false);
         setOnTouchListener(this);
 
-        linearLayout = new LinearLayout(context);
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        addView(linearLayout);
-        priImg = new ImageView(context);
-        img = new ImageView(context);
-        linearLayout.addView(priImg);
-        linearLayout.addView(img);
+//        linearLayout = new LinearLayout(context);
+//        linearLayout.setOrientation(LinearLayout.VERTICAL);
+//        addView(linearLayout);
+//        priImg = new ImageView(context);
+//        img = new ImageView(context);
+//        linearLayout.addView(priImg);
+//        linearLayout.addView(img);
+        setContentType(isImg);
+        setBackgroundResource(R.drawable.bg_score_num);
+    }
+
+    private void setContentType(boolean isImg) {
+        if (isImg) {
+            removeAllViews();
+            linearLayout = new LinearLayout(context);
+            linearLayout.setOrientation(LinearLayout.VERTICAL);
+            addView(linearLayout);
+            priImg = new ImageView(context);
+            img = new ImageView(context);
+            linearLayout.addView(priImg);
+            linearLayout.addView(img);
+            priImg.getLayoutParams().height = height;
+            img.getLayoutParams().height = height;
+        } else {
+            removeAllViews();
+            linearLayout = new LinearLayout(context);
+            linearLayout.setOrientation(LinearLayout.VERTICAL);
+            addView(linearLayout);
+            priTV = new TextView(context);
+            TV = new TextView(context);
+            linearLayout.addView(priTV);
+            linearLayout.addView(TV);
+            priTV.setTextColor(getResources().getColor(R.color.white));
+            TV.setTextColor(getResources().getColor(R.color.white));
+            priTV.getLayoutParams().height = height;
+            TV.getLayoutParams().height = height;
+        }
     }
 
     /**
@@ -77,12 +134,24 @@ public class NumView extends ScrollView implements View.OnTouchListener {
 
 
         if (change) {
-            priImg.setImageResource(resIds[priNum]);
-            img.setImageResource(resIds[num]);
+            if (isImg) {
+                priImg.setImageResource(resIds[priNum]);
+                img.setImageResource(resIds[num]);
+            } else {
+                priTV.setText(priNum + "");
+                TV.setText(num + "");
+            }
             anim();
+
         } else {
-            priImg.setImageResource(resIds[num]);
+            if (isImg) {
+
+                priImg.setImageResource(resIds[num]);
+            } else {
+                priTV.setText(num + "");
+            }
         }
+
     }
 
     //动画 after(false)

@@ -86,25 +86,71 @@ public interface WatchListView {
 
     void jumpToActivityFromMenu(Class aClass);
 
+    /**
+     * 连接状态
+     *
+     * @return
+     */
     boolean isConnect();
 
+    /**
+     * 设置连接状态
+     *
+     * @param connect
+     */
     void setConnect(boolean connect);
 
+    /**
+     * 取消连接等待
+     */
     void stopLoading();
 
-    RelativeLayout getSearchBar();
 
-    RelativeLayout getSearchLayout();
-
-    boolean isSearchBarVisibility();
-
-    void setSearchBarVisibility(boolean searchBarVisibility);
-
+    /**
+     * 返回上一页面
+     */
     void back();
 
+    /**
+     * 获取搜索内容
+     *
+     * @return
+     */
     String getSearchContent();
 
+    /**
+     * 得到搜索结果
+     *
+     * @param list
+     */
     void OnSearchResult(List<WatchBean> list);
 
+    /**
+     * 初始化搜索layout
+     */
     void initSearchLayout();
+
+    /**
+     * 获取搜索bar
+     *
+     * @return
+     */
+    RelativeLayout getSearchBar();
+
+    /**
+     * 获取搜索layout
+     *
+     * @return
+     */
+    RelativeLayout getSearchLayout();
+
+    /**
+     * @return
+     */
+    boolean isSearchBarVisibility();
+
+    /**
+     * @param searchBarVisibility
+     */
+    void setSearchBarVisibility(boolean searchBarVisibility);
 }

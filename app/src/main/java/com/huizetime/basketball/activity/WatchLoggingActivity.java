@@ -61,6 +61,8 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
     }
 
     private void initView() {
+        //初始化比分
+        mBNScore1.setItemNum(false, 3, 5);
         //设置球场  比例: 15/28
         mCourtView.getLayoutParams().height = (int) (mWidth * 15 / (float) 28);
         mCourtView.setOnPointListener(this);
@@ -68,11 +70,28 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
     }
 
     private void findView() {
+        mBNScore1 = (BigNumView) findViewById(R.id.a_score);
+        mBNScore2 = (BigNumView) findViewById(R.id.b_score);
         mCourtView = (CourtView) findViewById(R.id.court_view);
     }
 
     private void setData() {
+        int tvPage = MyApp.getApp().getTVCurrentPage();
 
+        switch (tvPage) {
+            case MyApp.PAGE_CONNECT:
+                //未录入 未签到
+
+                break;
+            case MyApp.PAGE_SIGN:
+                //签到
+
+                break;
+            case MyApp.PAGE_EVENT:
+                //录入
+
+                break;
+        }
     }
 
 
@@ -85,7 +104,7 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
         String content = "left:" + left + " right" + right + " score:" + score;
         ToastUtils.show(content);
         Log.i(TAG, "onPointClick: " + content);
-
+        mBNScore1.setNum(score*111, true);
     }
 
     @Override

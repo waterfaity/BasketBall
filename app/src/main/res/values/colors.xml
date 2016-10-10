@@ -12,4 +12,15 @@
     <color name="search_bg">#ECF1FA</color>
     <color name="faul">#FF0000</color>
     <color name="pause">#00FF00</color>
+    <color name="main_bg">#403C43</color>
+    <color name="bg_time_shadow_8">#88FFFFFF</color>
+    <color name="bg_time_shadow_7">#77FFFFFF</color>
+    <color name="bg_time_shadow_6">#66FFFFFF</color>
+    <color name="bg_time_shadow_5">#55FFFFFF</color>
+    <color name="bg_time_shadow_4">#44FFFFFF</color>
+    <color name="bg_time_shadow_3">#33FFFFFF</color>
+    <color name="bg_time_shadow_2">#22FFFFFF</color>
+    <color name="bg_time_shadow_1">#11FFFFFF</color>
+    <color name="line">#FFFFFF</color>
+    <color name="bg_num">#4c474f</color>
 </resources>
