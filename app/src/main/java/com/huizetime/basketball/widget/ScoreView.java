@@ -67,18 +67,18 @@ public class ScoreView extends LinearLayout {
         this.score = score;
         String[] split = (score + "").split("");
         int length = split.length;
-        if (split.length == 3) {
-            score1.setText(split[0]);
+        if (split.length == 4) {
+            score1.setText(split[1]);
+            score2.setText(split[2]);
+            score3.setText(split[3]);
+        } else if (length == 3) {
+            score1.setText("0");
             score2.setText(split[1]);
             score3.setText(split[2]);
         } else if (length == 2) {
             score1.setText("0");
-            score2.setText(split[0]);
-            score3.setText(split[1]);
-        } else {
-            score1.setText("0");
             score2.setText("0");
-            score3.setText(split[0]);
+            score3.setText(split[1]);
         }
         if (isFu) {
             score1.setText("-");

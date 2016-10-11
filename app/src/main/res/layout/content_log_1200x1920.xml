@@ -370,6 +370,7 @@
             android:orientation="vertical">
             <!--暂停按钮-->
             <TextView
+                android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_stop_part2"
                 android:background="@drawable/bg_score"
@@ -587,13 +588,15 @@
             android:id="@+id/court_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clickable="true" >
+            android:clickable="true"
+            android:visibility="gone">
+
             <TextView
-                android:textSize="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="stopping"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textSize="60dp" />
         </RelativeLayout>
 
     </RelativeLayout>

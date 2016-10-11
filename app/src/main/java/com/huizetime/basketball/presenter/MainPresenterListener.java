@@ -21,4 +21,5 @@ public interface MainPresenterListener extends BasePresenter{
     void change(int which, int type, int data);
 
 
+    void destroy();
 }

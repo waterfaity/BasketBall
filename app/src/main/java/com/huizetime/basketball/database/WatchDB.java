@@ -41,6 +41,4 @@ public class WatchDB extends SugarRecord {
     private int resultType;//结果类型
     @Column(unique = false, name = "result")
     private int result;//赛事结果
-
-
 }

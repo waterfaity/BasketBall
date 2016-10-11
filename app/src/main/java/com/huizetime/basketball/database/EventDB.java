@@ -12,6 +12,8 @@ public class EventDB extends SugarRecord {
     public static final int YES = 1;
     public static final int NO = 0;
     //全局类型(wholeType)
+
+    public static final int EVENT = 0;//投球事件
     public static final int WATCH_START = 1;//比赛开始 有跳球
     public static final int SEGMENT_START = 2;//小节开始
     public static final int PAUSE = 3;//暂停(A队暂停,B队暂停,teamId=0,裁判暂停或其他不由两队发起的暂停)

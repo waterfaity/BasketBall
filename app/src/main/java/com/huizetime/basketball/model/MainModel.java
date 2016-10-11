@@ -31,4 +31,7 @@ public interface MainModel {
 
     //手动断开连接
     void close();
+
+    //界面销毁
+    void destroy();
 }

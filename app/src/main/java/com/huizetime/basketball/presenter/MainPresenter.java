@@ -21,15 +21,12 @@ import java.util.List;
 /**
  * Created by water_fairy on 2016/9/26.
  */
-public class MainPresenter implements MainPresenterListener, ConnectManager.UserConnectListener {
+public class MainPresenter implements MainPresenterListener {
 
     private static final String TAG = "mainPresenter";
     private MainView mView;
     private Activity mActivity;
     private MainModel mModel;
-
-    private int mResultCode = TVData.RESULT_OK;
-
 
     public MainPresenter(WatchLoggingActivity activity) {
         mView = activity;
@@ -40,37 +37,6 @@ public class MainPresenter implements MainPresenterListener, ConnectManager.User
     @Override
     public void initData() {
         mModel.initData();
-    }
-
-
-    @Override
-    public void onConnectSuccess() {
-        Log.i(TAG, "user 连接成功");
-    }
-
-    @Override
-    public void onConnecting() {
-        Log.i(TAG, "user 连接中");
-    }
-
-    @Override
-    public void onDisconnect() {
-        Log.i(TAG, "user 连接断开");
-    }
-
-    @Override
-    public void onConnectError() {
-        Log.i(TAG, "user 连接错误");
-    }
-
-    @Override
-    public void onWrite(byte[] bytes) {
-
-    }
-
-    @Override
-    public void onRead(byte[] bytes, int len) {
-
     }
 
     @Override
@@ -139,6 +105,7 @@ public class MainPresenter implements MainPresenterListener, ConnectManager.User
             @Override
             public void onBelClick(boolean bel) {
                 if (bel) {
+
                     mView.back();
                 }
             }
@@ -146,4 +113,10 @@ public class MainPresenter implements MainPresenterListener, ConnectManager.User
 
 
     }
+
+    @Override
+    public void destroy() {
+        mModel.destroy();
+    }
+
 }
