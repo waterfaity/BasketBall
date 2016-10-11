@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    <!--第一部分  名字,比分,时间,小节-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_part_1">
+        <!--背景-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_part1_bg_height"
+            android:orientation="vertical">
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/line1_part1" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/center_line1_line2_part1"
+                android:background="@drawable/bg_part1" />
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/line2_part1" />
+        </LinearLayout>
+
+        <!--球队名字-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/top_name_part1"
+            android:paddingLeft="@dimen/left_margin"
+            android:paddingRight="@dimen/left_margin">
+
+            <TextView
+                android:id="@+id/a_name"
+                android:layout_width="@dimen/width_name_part1"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="梦之队梦之队对"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_team_name_part1" />
+
+            <TextView
+                android:id="@+id/b_name"
+                android:layout_width="@dimen/width_name_part1"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="right"
+                android:text="梦之队梦之队对"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_team_name_part1" />
+
+        </RelativeLayout>
+        <!--时间-->
+        <RelativeLayout
+            android:layout_width="@dimen/width_time_part1"
+            android:layout_height="@dimen/height_time_part1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/top_time_part1"
+            android:background="@drawable/bg_score"
+            android:padding="@dimen/padding_time_part1">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_score_num">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@+id/time"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OT"
+                        android:textColor="@color/text_color_OT"
+                        android:textSize="@dimen/text_size_OT_part1" />
+                    <!--小节  1 2 3 ,加-->
+                    <TextView
+                        android:id="@+id/segment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_OT_part1" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="@dimen/width_time_2_part1"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:text="12:56"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_time_2_part1" />
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+        <!--比分-->
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_time_part1"
+            android:layout_marginLeft="@dimen/left_to_parent_score_part1"
+            android:layout_marginRight="@dimen/left_to_parent_score_part1"
+            android:layout_marginTop="@dimen/top_time_part1">
+
+            <RelativeLayout
+                android:layout_width="@dimen/width_score_part1"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_score"
+                android:padding="@dimen/padding_time_part1">
+
+                <!--<TextView-->
+                <!--android:id="@+id/a_score"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:gravity="center"-->
+                <!--android:text="0 0 1"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="@dimen/text_size_score_part1" />-->
+                <com.huizetime.basketball.widget.ScoreView
+                    android:id="@+id/a_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:textSize="@dimen/text_size_score_part1"
+                    app:viewHeight="@dimen/height_score_part1" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="@dimen/width_score_part1"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_score"
+                android:padding="@dimen/padding_time_part1">
+
+                <com.huizetime.basketball.widget.ScoreView
+                    android:id="@+id/b_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:textSize="@dimen/text_size_score_part1"
+                    app:viewHeight="@dimen/height_score_part1" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <!--第二部分 logo,暂停,事件-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_part_2"
+        android:paddingLeft="@dimen/left_margin"
+        android:paddingRight="@dimen/left_margin">
+        <!--a队信息-->
+        <LinearLayout
+            android:id="@+id/a_info"
+            android:layout_width="@dimen/width_logo_part2"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/a_logo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_logo_part2"
+                android:src="@drawable/ball" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_ting_part2"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/a_ting_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/ting"
+                    android:textColor="@color/ting"
+                    android:textSize="@dimen/text_size_ting" />
+
+                <TextView
+                    android:id="@+id/a_huan_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/huan"
+                    android:textColor="@color/huan"
+                    android:textSize="@dimen/text_size_ting" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_ting_part2"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/fangui"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_fangui" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/zanting"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_fangui" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_ting_part2"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/a_fangui_times"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="@color/ting_time"
+                    android:textSize="@dimen/text_size_fangui" />
+
+                <TextView
+                    android:id="@+id/a_zanting_times"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="@color/huan_time"
+                    android:textSize="@dimen/text_size_fangui" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <!--b队信息-->
+        <LinearLayout
+            android:id="@+id/b_info"
+            android:layout_width="@dimen/width_logo_part2"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/b_logo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_logo_part2"
+                android:src="@drawable/ball" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_ting_part2"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/b_ting_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/ting"
+                    android:textColor="@color/ting"
+                    android:textSize="@dimen/text_size_ting" />
+
+                <TextView
+                    android:id="@+id/b_huan_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/huan"
+                    android:textColor="@color/huan"
+                    android:textSize="@dimen/text_size_ting" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_ting_part2"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/fangui"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_fangui" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/zanting"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_fangui" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_ting_part2"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/b_fangui_times"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="@color/ting_time"
+                    android:textSize="@dimen/text_size_fangui" />
+
+                <TextView
+                    android:id="@+id/b_zanting_times"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="@color/huan_time"
+                    android:textSize="@dimen/text_size_fangui" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <!--暂停按钮,事件-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/b_info"
+            android:layout_toRightOf="@+id/a_info"
+            android:orientation="vertical">
+            <!--暂停按钮-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_stop_part2"
+                android:background="@drawable/bg_score"
+                android:gravity="center"
+                android:text="@string/zanting"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_zanting_button" />
+            <!--事件1-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_stop_part2"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:background="@drawable/bg_event"
+                android:padding="@dimen/margin_normal">
+                <!--事件logo-->
+                <ImageView
+                    android:id="@+id/logo_event1"
+                    android:layout_width="@dimen/logo_little"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/margin_normal"
+                    android:src="@drawable/ball" />
+
+                <LinearLayout
+
+                    android:layout_width="@dimen/width_score_part2"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical">
+                    <!--事件a得分-->
+                    <TextView
+                        android:id="@+id/a_score_event1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="121"
+                        android:textColor="@color/huan"
+                        android:textSize="@dimen/text_size_score_part2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" - "
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_score_part2" />
+                    <!--事件b得分-->
+                    <TextView
+                        android:id="@+id/b_score_event1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="045"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_score_part2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/width_time_part2"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!--场次-->
+                    <TextView
+                        android:id="@+id/segment_event1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="1st"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_time_part2" />
+                    <!--事件时间-->
+                    <TextView
+                        android:id="@+id/time_event1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="12:20"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_time_part2" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!--事件信息-->
+                    <TextView
+                        android:id="@+id/info_event1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="德国队-哈喽积斯德24应吃完既定兔兔其后果3分中球"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_time_part2" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--事件2-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_stop_part2"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:background="@drawable/bg_event"
+                android:padding="@dimen/margin_normal">
+                <!--事件logo-->
+                <ImageView
+                    android:id="@+id/logo_event2"
+                    android:layout_width="@dimen/logo_little"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/margin_normal"
+                    android:src="@drawable/ball" />
+
+                <LinearLayout
+
+                    android:layout_width="@dimen/width_score_part2"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical">
+                    <!--事件a得分-->
+                    <TextView
+                        android:id="@+id/a_score_event2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="121"
+                        android:textColor="@color/huan"
+                        android:textSize="@dimen/text_size_score_part2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" - "
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_score_part2" />
+                    <!--事件b得分-->
+                    <TextView
+                        android:id="@+id/b_score_event2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="045"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_score_part2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/width_time_part2"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!--场次-->
+                    <TextView
+                        android:id="@+id/segment_event2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="1st"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_time_part2" />
+                    <!--事件时间-->
+                    <TextView
+                        android:id="@+id/time_event2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="12:20"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_time_part2" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <!--事件信息-->
+                    <TextView
+                        android:id="@+id/info_event2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="德国队-哈喽积斯德24应吃完既定兔兔其后果3分中球"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_time_part2" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <!--第二部分 球场-->
+    <RelativeLayout
+        android:layout_width="@dimen/width_part_3"
+        android:layout_height="@dimen/height_part_3"
+        android:layout_marginLeft="@dimen/left_margin"
+        android:layout_marginRight="@dimen/left_margin"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:background="@mipmap/court_bg"
+        android:padding="@dimen/padding_court">
+
+
+        <com.huizetime.basketball.widget.CourtView
+            android:id="@+id/court_view"
+            android:layout_width="@dimen/width_part_3"
+            android:layout_height="@dimen/height_part_3" />
+
+        <RelativeLayout
+            android:id="@+id/court_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true" >
+            <TextView
+                android:textSize="60dp"
+                android:layout_centerInParent="true"
+                android:text="stopping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

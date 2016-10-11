@@ -6,4 +6,6 @@
     <dimen name="activity_vertical_margin_half">8dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="watch_list_title_size">18dp</dimen>
+    <dimen name="height_stop_part2">75px</dimen>
+
 </resources>

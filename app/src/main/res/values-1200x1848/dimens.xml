@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="height_part_1">108px</dimen>
+    <dimen name="height_part_2">251px</dimen>
+    <dimen name="height_part_3">620px</dimen>
+    <dimen name="width_part_3">1157px</dimen>
+    <dimen name="height_part1_bg_height">91px</dimen>
+    <dimen name="left_margin">27px</dimen>
+    <dimen name="width_name_part1">279px</dimen>
+    <dimen name="center_line1_line2_part1">89px</dimen>
+    <dimen name="top_name_part1">15px</dimen>
+    <dimen name="text_size_team_name_part1">31px</dimen>
+    <dimen name="width_time_part1">221px</dimen>
+    <dimen name="height_time_part1">100px</dimen>
+    <dimen name="top_time_part1">7px</dimen>
+    <dimen name="padding_time_part1">8px</dimen>
+    <dimen name="left_to_parent_score_part1">306px</dimen>
+    <dimen name="width_score_part1">171px</dimen>
+    <dimen name="text_size_score_part1">40px</dimen>
+    <dimen name="width_time_2_part1">150px</dimen>
+    <dimen name="text_size_time_2_part1">45px</dimen>
+    <dimen name="text_size_OT_part1">30px</dimen>
+    <dimen name="width_logo_part2">185px</dimen>
+    <dimen name="height_logo_part2">100px</dimen>
+    <dimen name="height_ting_part2">47px</dimen>
+    <dimen name="text_size_ting">29px</dimen>
+    <dimen name="text_size_fangui">27px</dimen>
+    <dimen name="margin_normal" >8px</dimen>
+    <dimen name="text_size_zanting_button">35px</dimen>
+    <dimen name="logo_little">56px</dimen>
+    <dimen name="text_size_score_part2">28px</dimen>
+    <dimen name="width_score_part2">140px</dimen>
+    <dimen name="text_size_time_part2">24px</dimen>
+    <dimen name="width_time_part2">96px</dimen>
+    <dimen name="height_score_part1">84px</dimen>
+    <dimen name="padding_court">10px</dimen>
+</resources>

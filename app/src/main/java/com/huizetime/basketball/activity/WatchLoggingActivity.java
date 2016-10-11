@@ -46,6 +46,8 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         mWidth = displayMetrics.widthPixels;
+        Log.i(TAG, "onCreate:heightPixels "+displayMetrics.heightPixels);
+        Log.i(TAG, "onCreate:widthPixels "+displayMetrics.widthPixels);
         initData();
         findView();
         initView();
@@ -61,18 +63,18 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
     }
 
     private void initView() {
-        //初始化比分
-        mBNScore1.setItemNum(false, 3, 5);
-        //设置球场  比例: 15/28
-        mCourtView.getLayoutParams().height = (int) (mWidth * 15 / (float) 28);
-        mCourtView.setOnPointListener(this);
-        mCourtView.setWidth(28f);
+//        //初始化比分
+//        mBNScore1.setItemNum(false, 3, 5);
+//        //设置球场  比例: 15/28
+//        mCourtView.getLayoutParams().height = (int) (mWidth * 15 / (float) 28);
+//        mCourtView.setOnPointListener(this);
+//        mCourtView.setWidth(28f);
     }
 
     private void findView() {
-        mBNScore1 = (BigNumView) findViewById(R.id.a_score);
-        mBNScore2 = (BigNumView) findViewById(R.id.b_score);
-        mCourtView = (CourtView) findViewById(R.id.court_view);
+//        mBNScore1 = (BigNumView) findViewById(R.id.a_score);
+//        mBNScore2 = (BigNumView) findViewById(R.id.b_score);
+//        mCourtView = (CourtView) findViewById(R.id.court_view);
     }
 
     private void setData() {

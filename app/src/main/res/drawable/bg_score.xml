@@ -86,10 +86,10 @@
         android:bottom="8px"
         android:left="8px"
         android:right="8px"
-        android:top="8px">>
+        android:top="8px">
         <shape>
             <corners android:radius="5px" />
-            <solid android:color="@color/main_bg" />
+            <solid android:color="@color/bg_score" />
         </shape>
     </item>
 </layer-list>
