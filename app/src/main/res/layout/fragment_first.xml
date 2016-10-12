@@ -1,13 +1,217 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.huizetime.basketball.fragment.FirstFragment">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/height_clothes"
+            android:layout_marginLeft="@dimen/margin_normal">
+
+            <com.huizetime.basketball.widget.MultiClothesView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/height_clothes"
+                app:imgHeight="@dimen/height_clothes_real"
+                app:imgWidth="@dimen/width_clothes"
+                app:numSize="40px" />
+            <!--<com.huizetime.basketball.widget.ClothesView-->
+            <!--android:layout_width="@dimen/width_clothes"-->
+            <!--android:layout_height="@dimen/height_clothes"-->
+            <!--android:layout_marginRight="@dimen/right_clothes"-->
+
+            <!--app:clothesNum="1"-->
+            <!--app:clothesType="1"-->
+            <!--app:imgHeight="@dimen/height_clothes_real"-->
+            <!--app:imgWidth="@dimen/width_clothes"-->
+            <!--app:numSize="40px" />-->
+
+            <!--<com.huizetime.basketball.widget.ClothesView-->
+            <!--android:layout_width="@dimen/width_clothes"-->
+            <!--android:layout_height="@dimen/height_clothes"-->
+            <!--android:layout_marginRight="@dimen/right_clothes"-->
+
+            <!--app:clothesNum="2"-->
+            <!--app:clothesType="1"-->
+            <!--app:imgHeight="@dimen/height_clothes_real"-->
+            <!--app:imgWidth="@dimen/width_clothes"-->
+            <!--app:numSize="40px" />-->
+
+            <!--<com.huizetime.basketball.widget.ClothesView-->
+            <!--android:layout_width="@dimen/width_clothes"-->
+            <!--android:layout_height="@dimen/height_clothes"-->
+            <!--android:layout_marginRight="@dimen/right_clothes"-->
+
+            <!--app:clothesNum="3"-->
+            <!--app:clothesType="1"-->
+            <!--app:imgHeight="@dimen/height_clothes_real"-->
+            <!--app:imgWidth="@dimen/width_clothes"-->
+            <!--app:numSize="40px" />-->
+
+            <!--<com.huizetime.basketball.widget.ClothesView-->
+            <!--android:layout_width="@dimen/width_clothes"-->
+            <!--android:layout_height="@dimen/height_clothes"-->
+            <!--android:layout_marginRight="@dimen/right_clothes"-->
+
+            <!--app:clothesNum="4"-->
+            <!--app:clothesType="1"-->
+            <!--app:imgHeight="@dimen/height_clothes_real"-->
+            <!--app:imgWidth="@dimen/width_clothes"-->
+            <!--app:numSize="40px" />-->
+
+            <!--<com.huizetime.basketball.widget.ClothesView-->
+            <!--android:layout_width="@dimen/width_clothes"-->
+            <!--android:layout_height="@dimen/height_clothes"-->
+            <!--android:layout_marginRight="@dimen/right_clothes"-->
+
+            <!--app:clothesNum="5"-->
+            <!--app:clothesType="1"-->
+            <!--app:imgHeight="@dimen/height_clothes_real"-->
+            <!--app:imgWidth="@dimen/width_clothes"-->
+            <!--app:numSize="40px" />-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/height_clothes"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/margin_normal">
+
+            <com.huizetime.basketball.widget.ClothesView
+                android:layout_width="@dimen/width_clothes"
+                android:layout_height="@dimen/height_clothes"
+                android:layout_marginRight="@dimen/right_clothes"
+
+                app:clothesNum="1"
+                app:clothesType="2"
+                app:imgHeight="@dimen/height_clothes_real"
+                app:imgWidth="@dimen/width_clothes"
+                app:numSize="40px" />
+
+            <com.huizetime.basketball.widget.ClothesView
+                android:layout_width="@dimen/width_clothes"
+                android:layout_height="@dimen/height_clothes"
+                android:layout_marginRight="@dimen/right_clothes"
+
+                app:clothesNum="2"
+                app:clothesType="2"
+                app:imgHeight="@dimen/height_clothes_real"
+                app:imgWidth="@dimen/width_clothes"
+                app:numSize="40px" />
+
+            <com.huizetime.basketball.widget.ClothesView
+                android:layout_width="@dimen/width_clothes"
+                android:layout_height="@dimen/height_clothes"
+                android:layout_marginRight="@dimen/right_clothes"
+
+                app:clothesNum="3"
+                app:clothesType="2"
+                app:imgHeight="@dimen/height_clothes_real"
+                app:imgWidth="@dimen/width_clothes"
+                app:numSize="40px" />
+
+            <com.huizetime.basketball.widget.ClothesView
+                android:layout_width="@dimen/width_clothes"
+                android:layout_height="@dimen/height_clothes"
+                android:layout_marginRight="@dimen/right_clothes"
+
+                app:clothesNum="4"
+                app:clothesType="2"
+                app:imgHeight="@dimen/height_clothes_real"
+                app:imgWidth="@dimen/width_clothes"
+                app:numSize="40px" />
+
+            <com.huizetime.basketball.widget.ClothesView
+                android:layout_width="@dimen/width_clothes"
+                android:layout_height="@dimen/height_clothes"
+
+                app:clothesNum="5"
+                app:clothesType="2"
+                app:imgHeight="@dimen/height_clothes_real"
+                app:imgWidth="@dimen/width_clothes"
+                app:numSize="40px" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/top_margin_button_first_fragment"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_button_first_fragment"
+            android:layout_marginRight="@dimen/right_margin_button_first_fragment"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button_fragment"
+            android:gravity="center"
+            android:text="@string/watch_start"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_button_first_fragment" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_button_first_fragment"
+            android:layout_marginRight="@dimen/right_margin_button_first_fragment"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button_fragment"
+            android:gravity="center"
+            android:text="@string/first_ball_player"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_button_first_fragment" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_button_first_fragment"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button_fragment"
+            android:gravity="center"
+            android:text="@string/change_area"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_button_first_fragment" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/top_margin_button_2_first_fragment"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_button_first_fragment"
+            android:layout_marginRight="@dimen/right_margin_button_first_fragment"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button_fragment"
+            android:gravity="center"
+            android:text="@string/some_one_give_up"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_button_first_fragment" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_button_first_fragment"
+            android:layout_marginRight="@dimen/right_margin_button_first_fragment"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button_fragment"
+            android:gravity="center"
+            android:text="@string/watch_failed"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_button_first_fragment" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_button_first_fragment"
+            android:layout_weight="1" />
+    </LinearLayout>
+</LinearLayout>

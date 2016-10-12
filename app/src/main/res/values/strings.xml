@@ -24,4 +24,9 @@
     <string name="fangui">犯规</string>
     <string name="zanting">暂停</string>
     <string name="huan">换</string>
+    <string name="watch_start">比赛开始</string>
+    <string name="first_ball_player">首发球员</string>
+    <string name="change_area">场地交换</string>
+    <string name="some_one_give_up">一方弃权</string>
+    <string name="watch_failed">比赛作废</string>
 </resources>

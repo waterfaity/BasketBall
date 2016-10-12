@@ -35,4 +35,14 @@
     <dimen name="width_time_part2">96px</dimen>
     <dimen name="height_score_part1">84px</dimen>
     <dimen name="padding_court">10px</dimen>
+    <dimen name="top_part3">20px</dimen>
+    <dimen name="height_clothes">118px</dimen>
+    <dimen name="width_clothes">81px</dimen>
+    <dimen name="right_clothes">30px</dimen>
+    <dimen name="height_clothes_real">102px</dimen>
+    <dimen name="height_button_first_fragment">144px</dimen>
+    <dimen name="right_margin_button_first_fragment">25px</dimen>
+    <dimen name="top_margin_button_first_fragment">45px</dimen>
+    <dimen name="text_size_button_first_fragment">41px</dimen>
+    <dimen name="top_margin_button_2_first_fragment">21px</dimen>
 </resources>

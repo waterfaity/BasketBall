@@ -19,6 +19,7 @@ import com.huizetime.basketball.R;
 import com.huizetime.basketball.application.MyApp;
 import com.huizetime.basketball.bean.EventBean;
 import com.huizetime.basketball.fragment.BaseFragment;
+import com.huizetime.basketball.fragment.FirstFragment;
 import com.huizetime.basketball.presenter.MainPresenter;
 import com.huizetime.basketball.presenter.MainPresenterListener;
 import com.huizetime.basketball.utils.ConstantUtils;
@@ -132,7 +133,6 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
 
         mPresenter = new MainPresenter(this);
         mPresenter.initData();
-        BaseFragment.init(this);
     }
 
     private void initView() {
@@ -140,6 +140,9 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
         mCourtView.getLayoutParams().height = (int) (mWidth * 15 / (float) 28);
         mCourtView.setOnPointListener(this);
         mCourtView.setWidth(28f);
+
+        FirstFragment firstFragment = new FirstFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.frameLayout, firstFragment).attach(firstFragment).commit();
     }
 
     private void findView() {
@@ -429,4 +432,5 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
         super.onDestroy();
         mPresenter.destroy();
     }
+
 }

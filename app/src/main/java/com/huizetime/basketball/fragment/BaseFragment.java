@@ -1,7 +1,11 @@
 package com.huizetime.basketball.fragment;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.huizetime.basketball.activity.WatchLoggingActivity;
 import com.huizetime.basketball.presenter.MainPresenterListener;
@@ -11,13 +15,11 @@ import com.huizetime.basketball.presenter.MainPresenterListener;
  */
 
 public class BaseFragment extends Fragment {
-    protected static WatchLoggingActivity mActivity;
-    protected static MainPresenterListener mMainPresenter;
-    protected View mMainView;
+    protected View mView;
 
-    public static void init(WatchLoggingActivity activity) {
-        mActivity = activity;
-        mMainPresenter = activity.getPresenter();
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
-
 }

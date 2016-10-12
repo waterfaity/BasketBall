@@ -4,4 +4,11 @@
         <attr name="textSize" format="dimension" />
         <attr name="viewHeight" format="dimension" />
     </declare-styleable>
+    <declare-styleable name="ClothesView">
+        <attr name="imgHeight" format="dimension" />
+        <attr name="imgWidth" format="dimension" />
+        <attr name="numSize" format="dimension" />
+        <attr name="clothesNum" format="string" />
+        <attr name="clothesType" format="string" />
+    </declare-styleable>
 </resources>

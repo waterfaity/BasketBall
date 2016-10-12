@@ -37,6 +37,11 @@ public class MainModelSimple implements MainModel {
         //初始化广播
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(ConstantUtils.ACTION_A_SCORE);
+        intentFilter.addAction(ConstantUtils.ACTION_B_SCORE);
+        intentFilter.addAction(ConstantUtils.ACTION_CHANGE);
+        intentFilter.addAction(ConstantUtils.ACTION_EVENT);
+        intentFilter.addAction(ConstantUtils.ACTION_SEGMENT);
+        intentFilter.addAction(ConstantUtils.ACTION_STOP);
         mActivity.registerReceiver(mDataReceiver, intentFilter);
     }
 
@@ -78,7 +83,6 @@ public class MainModelSimple implements MainModel {
     @Override
     public void close() {
         mTVDataSendManager.close();
-
     }
 
 
@@ -92,8 +96,21 @@ public class MainModelSimple implements MainModel {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             switch (action) {
-
+                case ConstantUtils.ACTION_A_SCORE:
+                    break;
+                case ConstantUtils.ACTION_B_SCORE:
+                    break;
+                case ConstantUtils.ACTION_CHANGE:
+                    break;
+                case ConstantUtils.ACTION_EVENT:
+                    break;
+                case ConstantUtils.ACTION_SEGMENT:
+                    break;
+                case ConstantUtils.ACTION_STOP:
+                    break;
             }
         }
     };
+
+
 }
