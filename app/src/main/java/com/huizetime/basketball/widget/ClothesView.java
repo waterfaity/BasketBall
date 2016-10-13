@@ -1,7 +1,6 @@
 package com.huizetime.basketball.widget;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;
@@ -9,7 +8,6 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -42,6 +40,7 @@ public class ClothesView extends LinearLayout implements View.OnClickListener {
     private OnClickListener onClickListener;
 
     private boolean canClick = true;
+    private int imgTopInLin;//图片高度与边框差
 
     public ClothesView(Context context) {
         super(context);
@@ -49,6 +48,7 @@ public class ClothesView extends LinearLayout implements View.OnClickListener {
 
     public ClothesView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        imgTopInLin = (int) getResources().getDimension(R.dimen.top_clothes_in_lin);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ClothesView);
         imgHeight = typedArray.getDimension(R.styleable.ClothesView_imgHeight, 10);
         imgWidth = typedArray.getDimension(R.styleable.ClothesView_imgWidth, 10);
@@ -141,25 +141,26 @@ public class ClothesView extends LinearLayout implements View.OnClickListener {
         switch (clothType) {
             case TYPE_A:
                 resId = R.mipmap.a_clothes_normal;
-                layoutParams.gravity = Gravity.BOTTOM;
+                layoutParams.topMargin = imgTopInLin;
                 break;
             case TYPE_B:
                 resId = R.mipmap.b_clothes_normal;
-                layoutParams.gravity = Gravity.BOTTOM;
+                layoutParams.topMargin = imgTopInLin;
                 break;
             case TYPE_A_SELECT:
                 resId = R.mipmap.a_clothes_select;
-                layoutParams.gravity = Gravity.TOP;
+                layoutParams.topMargin = 0;
                 break;
             case TYPE_B_SELECT:
                 resId = R.mipmap.b_clothes_select;
-                layoutParams.gravity = Gravity.TOP;
+                layoutParams.topMargin = 0;
                 break;
             case TYPE_NORMAL:
                 resId = R.mipmap.clothes;
-                layoutParams.gravity = Gravity.BOTTOM;
+                layoutParams.topMargin = 0;
                 break;
         }
+
         relativeLayout.setLayoutParams(layoutParams);
         imageView.setImageBitmap(BitmapFactory.decodeResource(getResources(), resId));
     }

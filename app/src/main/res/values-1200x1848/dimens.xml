@@ -45,4 +45,6 @@
     <dimen name="top_margin_button_first_fragment">45px</dimen>
     <dimen name="text_size_button_first_fragment">41px</dimen>
     <dimen name="top_margin_button_2_first_fragment">21px</dimen>
+    <dimen name="top_clothes_lin">15px</dimen>
+    <dimen name="top_clothes_in_lin">16px</dimen>
 </resources>

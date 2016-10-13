@@ -1,10 +1,8 @@
 package com.huizetime.basketball.widget;
 
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.nfc.Tag;
-import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -23,9 +21,12 @@ public class MultiClothesView extends LinearLayout {
     public static final int WHICH_A = 1;
     public static final int WHICH_B = 2;
 
+    private int clothesNum = 5;//默认5个
+
     private int selectNum = 0;//可被选中的数量
-    private int which;
-    private List<ClothesView> mList;
+    private int which;//AB队
+    private List<LinearLayout> mRowList;//每列集合
+    private List<ClothesView> mClothesList;//衣服集合
 
     private HashMap hashMap = new HashMap();
 
@@ -45,34 +46,37 @@ public class MultiClothesView extends LinearLayout {
     }
 
     private void initView(Context context, AttributeSet attrs) {
-        mList = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            ClothesView clothesView = new ClothesView(context, attrs);
-            clothesView.setTag(i);
-            clothesView.setOnClothesClickListener(onClothesClick);
-            clothesView.setCanClick(true);
-            mList.add(clothesView);
-            addView(clothesView);
-            clothesView.setNum(i);
-            LinearLayout.LayoutParams layoutParams = (LayoutParams) clothesView.getLayoutParams();
-            layoutParams.height = (int) getResources().getDimension(R.dimen.height_clothes);
-            if (i != 4) {
-                layoutParams.rightMargin = (int) getResources().getDimension(R.dimen.right_clothes);
-            }
-        }
-    }
+        mClothesList = new ArrayList<>();
 
-    public void canSelectNum(int num) {
-        if (num > 5) {
-            selectNum = 5;
-        }
-        if (num <= 0) {
-            selectNum = 0;
-            for (int i = 0; i < 5; i++) {
-                mList.get(i).setChecked(false);
+        int rows = clothesNum / 5;
+        for (int i = 0; i < rows; i++) {
+            LinearLayout linearLayout = new LinearLayout(context);
+            addView(linearLayout);//添加行数
+            LinearLayout.LayoutParams layoutParams = (LayoutParams) linearLayout.getLayoutParams();
+            if ((clothesNum == 2 && i == 0) || (rows == 3 && (i == 0 || i == 1))) {
+                //每列中间间距
+                layoutParams.bottomMargin =
+                        (int) getResources().getDimension(R.dimen.top_clothes_lin);
+            }
+            layoutParams.height = (int) getResources().getDimension(R.dimen.height_clothes);
+            linearLayout.setLayoutParams(layoutParams);
+            for (int j = 0; j < 5; j++) {
+                ClothesView clothesView = new ClothesView(context, attrs);
+                clothesView.setTag(i * 5 + j);//设置tag 0,1,2,---,13,14
+                clothesView.setOnClothesClickListener(onClothesClick);
+                clothesView.setCanClick(true);
+                clothesView.setNum(i * 5 + j + 1);
+                mClothesList.add(clothesView);
+                linearLayout.addView(clothesView);//每行添加衣服数量
+                LinearLayout.LayoutParams clothesViewLayoutParams = (LayoutParams) clothesView.getLayoutParams();
+                clothesViewLayoutParams.height = (int) getResources().getDimension(R.dimen.height_clothes);
+                if (j != 4) {
+                    //除每行最后一个 设置右边距离
+                    clothesViewLayoutParams.rightMargin = (int) getResources().getDimension(R.dimen.right_clothes);
+                }
+                clothesView.setLayoutParams(clothesViewLayoutParams);
             }
         }
-        selectNum = num;
     }
 
     private int lastPos = -1;
@@ -82,14 +86,13 @@ public class MultiClothesView extends LinearLayout {
             if (selectNum == 0) {
                 return;
             }
-//            hashMap.clear();
             ClothesView tempClothesView = (ClothesView) v;
             int tag = (int) v.getTag();
 
             //监听到衣服被点击
             int num = 0;
-            for (int i = 0; i < 5; i++) {
-                boolean select = mList.get(i).isSelect();
+            for (int i = 0; i < clothesNum; i++) {
+                boolean select = mClothesList.get(i).isSelect();
                 if (select) {
                     num++;
                 }
@@ -103,10 +106,10 @@ public class MultiClothesView extends LinearLayout {
                 } else {
                     if (lastPos == tag) {
                         //相同
-                        mList.get(tag).transType();
+                        mClothesList.get(tag).transType();
                     } else {
-                        for (int i = 0; i < 5; i++) {
-                            ClothesView clothesView = mList.get(i);
+                        for (int i = 0; i < clothesNum; i++) {
+                            ClothesView clothesView = mClothesList.get(i);
                             if (i == tag) {
                                 clothesView.setChecked(true);
                             } else {
@@ -114,14 +117,11 @@ public class MultiClothesView extends LinearLayout {
                             }
                         }
                     }
-
                 }
 
             } else {
                 //多选
-
                 //状态改变前  选中情况(num , hashMap)
-
                 if (selectNum <= num) {
                     if (tempClothesView.isSelect()) {
                         tempClothesView.transType();
@@ -130,12 +130,41 @@ public class MultiClothesView extends LinearLayout {
                     tempClothesView.transType();
                 }
             }
-
-
             lastPos = tag;
-
         }
     };
 
+    //设置衣服数量(5 10 15)
+    public void setClothesNum(int num) {
+        this.clothesNum = num;
+    }
 
+    //设置AB队
+    public void setWhich(int which) {
+        this.which = which;
+        for (int i = 0; i < mClothesList.size(); i++) {
+            mClothesList.get(i).setType(which);
+        }
+    }
+
+    //设置可被选中的数量
+    public void canSelectNum(int num) {
+        if (num <= 0) {
+            selectNum = 0;
+            for (int i = 0; i < 5; i++) {
+                mClothesList.get(i).setChecked(false);
+            }
+        }
+        selectNum = num;
+    }
+
+    //获取选中的衣服
+    public List<ClothesView> getChecked() {
+        List<ClothesView> list = new ArrayList<>();
+        for (int i = 0; i < clothesNum; i++) {
+            ClothesView clothesView = mClothesList.get(i);
+            if (clothesView.isSelect()) list.add(clothesView);
+        }
+        return list;
+    }
 }

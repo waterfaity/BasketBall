@@ -9,135 +9,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+
+        <com.huizetime.basketball.widget.MultiClothesView
+            android:id="@+id/team_a"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/height_clothes"
-            android:layout_marginLeft="@dimen/margin_normal">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:orientation="vertical"
+            app:imgHeight="@dimen/height_clothes_real"
+            app:imgWidth="@dimen/width_clothes"
+            app:numSize="40px" />
 
-            <com.huizetime.basketball.widget.MultiClothesView
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/height_clothes"
-                app:imgHeight="@dimen/height_clothes_real"
-                app:imgWidth="@dimen/width_clothes"
-                app:numSize="40px" />
-            <!--<com.huizetime.basketball.widget.ClothesView-->
-            <!--android:layout_width="@dimen/width_clothes"-->
-            <!--android:layout_height="@dimen/height_clothes"-->
-            <!--android:layout_marginRight="@dimen/right_clothes"-->
-
-            <!--app:clothesNum="1"-->
-            <!--app:clothesType="1"-->
-            <!--app:imgHeight="@dimen/height_clothes_real"-->
-            <!--app:imgWidth="@dimen/width_clothes"-->
-            <!--app:numSize="40px" />-->
-
-            <!--<com.huizetime.basketball.widget.ClothesView-->
-            <!--android:layout_width="@dimen/width_clothes"-->
-            <!--android:layout_height="@dimen/height_clothes"-->
-            <!--android:layout_marginRight="@dimen/right_clothes"-->
-
-            <!--app:clothesNum="2"-->
-            <!--app:clothesType="1"-->
-            <!--app:imgHeight="@dimen/height_clothes_real"-->
-            <!--app:imgWidth="@dimen/width_clothes"-->
-            <!--app:numSize="40px" />-->
-
-            <!--<com.huizetime.basketball.widget.ClothesView-->
-            <!--android:layout_width="@dimen/width_clothes"-->
-            <!--android:layout_height="@dimen/height_clothes"-->
-            <!--android:layout_marginRight="@dimen/right_clothes"-->
-
-            <!--app:clothesNum="3"-->
-            <!--app:clothesType="1"-->
-            <!--app:imgHeight="@dimen/height_clothes_real"-->
-            <!--app:imgWidth="@dimen/width_clothes"-->
-            <!--app:numSize="40px" />-->
-
-            <!--<com.huizetime.basketball.widget.ClothesView-->
-            <!--android:layout_width="@dimen/width_clothes"-->
-            <!--android:layout_height="@dimen/height_clothes"-->
-            <!--android:layout_marginRight="@dimen/right_clothes"-->
-
-            <!--app:clothesNum="4"-->
-            <!--app:clothesType="1"-->
-            <!--app:imgHeight="@dimen/height_clothes_real"-->
-            <!--app:imgWidth="@dimen/width_clothes"-->
-            <!--app:numSize="40px" />-->
-
-            <!--<com.huizetime.basketball.widget.ClothesView-->
-            <!--android:layout_width="@dimen/width_clothes"-->
-            <!--android:layout_height="@dimen/height_clothes"-->
-            <!--android:layout_marginRight="@dimen/right_clothes"-->
-
-            <!--app:clothesNum="5"-->
-            <!--app:clothesType="1"-->
-            <!--app:imgHeight="@dimen/height_clothes_real"-->
-            <!--app:imgWidth="@dimen/width_clothes"-->
-            <!--app:numSize="40px" />-->
-
-        </LinearLayout>
-
-        <LinearLayout
+        <com.huizetime.basketball.widget.MultiClothesView
+            android:id="@+id/team_b"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/height_clothes"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/margin_normal">
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:orientation="vertical"
+            app:clothesType="2"
+            app:imgHeight="@dimen/height_clothes_real"
+            app:imgWidth="@dimen/width_clothes"
+            app:numSize="40px" />
 
-            <com.huizetime.basketball.widget.ClothesView
-                android:layout_width="@dimen/width_clothes"
-                android:layout_height="@dimen/height_clothes"
-                android:layout_marginRight="@dimen/right_clothes"
-
-                app:clothesNum="1"
-                app:clothesType="2"
-                app:imgHeight="@dimen/height_clothes_real"
-                app:imgWidth="@dimen/width_clothes"
-                app:numSize="40px" />
-
-            <com.huizetime.basketball.widget.ClothesView
-                android:layout_width="@dimen/width_clothes"
-                android:layout_height="@dimen/height_clothes"
-                android:layout_marginRight="@dimen/right_clothes"
-
-                app:clothesNum="2"
-                app:clothesType="2"
-                app:imgHeight="@dimen/height_clothes_real"
-                app:imgWidth="@dimen/width_clothes"
-                app:numSize="40px" />
-
-            <com.huizetime.basketball.widget.ClothesView
-                android:layout_width="@dimen/width_clothes"
-                android:layout_height="@dimen/height_clothes"
-                android:layout_marginRight="@dimen/right_clothes"
-
-                app:clothesNum="3"
-                app:clothesType="2"
-                app:imgHeight="@dimen/height_clothes_real"
-                app:imgWidth="@dimen/width_clothes"
-                app:numSize="40px" />
-
-            <com.huizetime.basketball.widget.ClothesView
-                android:layout_width="@dimen/width_clothes"
-                android:layout_height="@dimen/height_clothes"
-                android:layout_marginRight="@dimen/right_clothes"
-
-                app:clothesNum="4"
-                app:clothesType="2"
-                app:imgHeight="@dimen/height_clothes_real"
-                app:imgWidth="@dimen/width_clothes"
-                app:numSize="40px" />
-
-            <com.huizetime.basketball.widget.ClothesView
-                android:layout_width="@dimen/width_clothes"
-                android:layout_height="@dimen/height_clothes"
-
-                app:clothesNum="5"
-                app:clothesType="2"
-                app:imgHeight="@dimen/height_clothes_real"
-                app:imgWidth="@dimen/width_clothes"
-                app:numSize="40px" />
-
-        </LinearLayout>
     </RelativeLayout>
 
     <LinearLayout
@@ -148,6 +43,9 @@
         android:orientation="horizontal">
 
         <TextView
+            android:clickable="true"
+            android:onClick="onClick"
+            android:id="@+id/watch_start"
             android:layout_width="0dp"
             android:layout_height="@dimen/height_button_first_fragment"
             android:layout_marginRight="@dimen/right_margin_button_first_fragment"
@@ -159,6 +57,9 @@
             android:textSize="@dimen/text_size_button_first_fragment" />
 
         <TextView
+            android:clickable="true"
+            android:onClick="onClick"
+            android:id="@+id/first_players"
             android:layout_width="0dp"
             android:layout_height="@dimen/height_button_first_fragment"
             android:layout_marginRight="@dimen/right_margin_button_first_fragment"
@@ -170,6 +71,9 @@
             android:textSize="@dimen/text_size_button_first_fragment" />
 
         <TextView
+            android:clickable="true"
+            android:onClick="onClick"
+            android:id="@+id/change_area"
             android:layout_width="0dp"
             android:layout_height="@dimen/height_button_first_fragment"
             android:layout_weight="1"
@@ -188,6 +92,9 @@
         android:orientation="horizontal">
 
         <TextView
+            android:clickable="true"
+            android:onClick="onClick"
+            android:id="@+id/give_up"
             android:layout_width="0dp"
             android:layout_height="@dimen/height_button_first_fragment"
             android:layout_marginRight="@dimen/right_margin_button_first_fragment"
@@ -199,6 +106,9 @@
             android:textSize="@dimen/text_size_button_first_fragment" />
 
         <TextView
+            android:clickable="true"
+            android:onClick="onClick"
+            android:id="@+id/cancellation"
             android:layout_width="0dp"
             android:layout_height="@dimen/height_button_first_fragment"
             android:layout_marginRight="@dimen/right_margin_button_first_fragment"
