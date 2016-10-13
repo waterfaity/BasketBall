@@ -17,7 +17,6 @@ import android.widget.TextView;
 import com.huizetime.basketball.R;
 import com.huizetime.basketball.application.MyApp;
 import com.huizetime.basketball.bean.EventBean;
-import com.huizetime.basketball.fragment.prepare.HomePrepareFragment;
 import com.huizetime.basketball.presenter.MainPresenter;
 import com.huizetime.basketball.presenter.MainPresenterListener;
 import com.huizetime.basketball.utils.ConstantUtils;
@@ -139,8 +138,6 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
         mCourtView.setOnPointListener(this);
         mCourtView.setWidth(28f);
 
-        HomePrepareFragment firstFragment = new HomePrepareFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.frameLayout, firstFragment).attach(firstFragment).commit();
     }
 
     private void findView() {

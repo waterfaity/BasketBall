@@ -1,4 +1,7 @@
 package com.huizetime.basketball.fragment.prepare;
+/**
+ * 比赛准备阶段
+ */
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +13,7 @@ import android.widget.TextView;
 
 import com.huizetime.basketball.R;
 import com.huizetime.basketball.widget.MultiClothesView;
+
 
 public class HomePrepareFragment extends Fragment {
     private View mView;
@@ -34,7 +38,7 @@ public class HomePrepareFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_first, container, false);
+        mView = inflater.inflate(R.layout.fragment_home_prepare, container, false);
         findView();
         initView();
         initData();
