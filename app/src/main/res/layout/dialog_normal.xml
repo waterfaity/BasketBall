@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/dialog_left"
+    android:paddingRight="@dimen/dialog_left"
+    android:paddingTop="@dimen/dialog_top">
+
+    <RelativeLayout
+        android:id="@+id/popup_anim"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_dialog"
+        android:background="@drawable/bg_dialog"
+        android:paddingBottom="@dimen/dialog_bottom_content"
+        android:paddingTop="@dimen/dialog_top_content">
+
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="队伍弃权确认"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_dialog_title" />
+
+        <TextView
+            android:id="@+id/dialog_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button_line"
+            android:layout_below="@+id/dialog_title"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:paddingLeft="@dimen/left_dialog_content_text"
+            android:paddingRight="@dimen/left_dialog_content_text"
+            android:text="请确认[弃权队伍的名字]是否弃权嘛吗?\n确认后比赛将结束"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_dialog_content" />
+
+        <LinearLayout
+            android:id="@+id/button_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/dialog_cancel"
+                android:layout_width="@dimen/width_dialog_button"
+                android:layout_height="@dimen/height_dialog_button"
+                android:layout_marginRight="@dimen/right_dialog_button"
+                android:background="@drawable/select_dialog_cancel_button"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_dialog_button" />
+
+            <TextView
+                android:id="@+id/dialog_ensure"
+                android:layout_width="@dimen/width_dialog_button"
+                android:layout_height="@dimen/height_dialog_button"
+                android:background="@drawable/select_dialog_ensure_button"
+                android:gravity="center"
+                android:text="确认"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_dialog_button" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -2,15 +2,10 @@ package com.huizetime.basketball.utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.PopupWindow;
 
-import com.huizetime.basketball.R;
 import com.huizetime.basketball.listener.OnBelClickListener;
+import com.huizetime.basketball.popup.PopupNormalDialog;
 import com.huizetime.basketball.popup.PopupLoading;
 
 /**
@@ -64,6 +59,15 @@ public class DialogUtils {
         PopupLoading loading = new PopupLoading(activity);
         loading.showPopupWindow();
         return loading;
+    }
+
+    public static PopupNormalDialog showDialog(
+            Activity activity,
+            String title,
+            String content,
+            OnBelClickListener clickListener) {
+        return new PopupNormalDialog(activity, title, content, clickListener);
+
     }
 
 }

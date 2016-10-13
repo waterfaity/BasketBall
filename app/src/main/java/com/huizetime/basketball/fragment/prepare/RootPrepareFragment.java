@@ -1,19 +1,40 @@
 package com.huizetime.basketball.fragment.prepare;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import com.huizetime.basketball.R;
+import com.huizetime.basketball.fragment.RootBaseFragment;
 
-public class RootPrepareFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
+
+public class RootPrepareFragment extends RootBaseFragment {
+    private HomePrepareFragment mHomePrepareFragment;
+    private WatchStartFragment mWatchStartFragment;
+    private FirstPlayerFragment mFirstPlayerFragment;
+    private GiveUpFragment mGiveUpFragment;
+    private int mUpFragment;
+    private int mLastFragment;
+
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_root, container, false);
+    public void initFragment() {
+
+        mHomePrepareFragment = new HomePrepareFragment();
+        mWatchStartFragment = new WatchStartFragment();
+        mFirstPlayerFragment = new FirstPlayerFragment();
+        mGiveUpFragment = new GiveUpFragment();
+
+        mFragmentList.add(mHomePrepareFragment);
+        mFragmentList.add(mWatchStartFragment);
+        mFragmentList.add(mFirstPlayerFragment);
+        mFragmentList.add(mGiveUpFragment);
+        super.initFragment();
+
+    }
+
+    @Override
+    public void initData() {
+
     }
 
 }

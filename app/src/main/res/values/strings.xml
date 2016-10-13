@@ -29,4 +29,8 @@
     <string name="change_area">场地交换</string>
     <string name="some_one_give_up">一方弃权</string>
     <string name="watch_failed">比赛作废</string>
+    <string name="ensure_start_watch">请确认是否结束比赛准备阶段\n正式开始比赛?</string>
+    <string name="chang_clothes_num">球衣修改</string>
+    <string name="go_to_court">上场</string>
+    <string name="back">返回</string>
 </resources>

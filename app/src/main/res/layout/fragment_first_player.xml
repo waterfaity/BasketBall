@@ -1,0 +1,81 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.huizetime.basketball.widget.MultiClothesView
+            android:id="@+id/team_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:orientation="vertical"
+            app:imgHeight="@dimen/height_clothes_real"
+            app:imgWidth="@dimen/width_clothes"
+            app:numSize="40px" />
+
+        <com.huizetime.basketball.widget.MultiClothesView
+            android:id="@+id/team_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:orientation="vertical"
+            app:clothesType="2"
+            app:imgHeight="@dimen/height_clothes_real"
+            app:imgWidth="@dimen/width_clothes"
+            app:numSize="40px" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/top_margin_button_first_fragment"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/change_clothes"
+            android:layout_width="@dimen/width_clothes_change_button"
+            android:layout_height="@dimen/height_button_first_fragment"
+            android:layout_marginRight="@dimen/right_margin_button_first_fragment"
+            android:background="@drawable/bg_button_fragment"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="@string/chang_clothes_num"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_button_first_fragment" />
+
+        <TextView
+            android:id="@+id/first_players"
+            android:layout_width="@dimen/width_go_to_court_button"
+            android:layout_height="@dimen/height_button_first_fragment"
+            android:layout_marginLeft="@dimen/left_change_clothes_button"
+            android:layout_marginRight="@dimen/right_margin_button_first_fragment"
+            android:layout_toRightOf="@+id/change_clothes"
+            android:background="@drawable/bg_button_fragment"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="@string/go_to_court"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_button_first_fragment" />
+
+        <include
+            layout="@layout/back_in_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+
+</LinearLayout>

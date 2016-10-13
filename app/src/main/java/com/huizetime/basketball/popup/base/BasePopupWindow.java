@@ -402,7 +402,18 @@ public abstract class BasePopupWindow implements BasePopup {
      */
     protected Animation getDefaultAlphaAnimation() {
         Animation alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
-        alphaAnimation.setDuration(300);
+        alphaAnimation.setDuration(150);
+        alphaAnimation.setInterpolator(new AccelerateInterpolator());
+        alphaAnimation.setFillEnabled(true);
+        alphaAnimation.setFillAfter(true);
+        return alphaAnimation;
+    }
+    /**
+     * 消失默认的AlphaAnimation
+     */
+    protected Animation getDefaultExitAlphaAnimation() {
+        Animation alphaAnimation = new AlphaAnimation(1.0f, 0.0f);
+        alphaAnimation.setDuration(150);
         alphaAnimation.setInterpolator(new AccelerateInterpolator());
         alphaAnimation.setFillEnabled(true);
         alphaAnimation.setFillAfter(true);

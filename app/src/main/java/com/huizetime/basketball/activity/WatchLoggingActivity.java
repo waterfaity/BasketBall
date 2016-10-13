@@ -3,6 +3,8 @@ package com.huizetime.basketball.activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -17,6 +19,11 @@ import android.widget.TextView;
 import com.huizetime.basketball.R;
 import com.huizetime.basketball.application.MyApp;
 import com.huizetime.basketball.bean.EventBean;
+import com.huizetime.basketball.fragment.RootBaseFragment;
+import com.huizetime.basketball.fragment.end.RootEndFragment;
+import com.huizetime.basketball.fragment.prepare.RootPrepareFragment;
+import com.huizetime.basketball.fragment.process.RootProcessFragment;
+import com.huizetime.basketball.fragment.team.RootTeamFragment;
 import com.huizetime.basketball.presenter.MainPresenter;
 import com.huizetime.basketball.presenter.MainPresenterListener;
 import com.huizetime.basketball.utils.ConstantUtils;
@@ -26,6 +33,9 @@ import com.huizetime.basketball.view.MainView;
 import com.huizetime.basketball.widget.BigNumView;
 import com.huizetime.basketball.widget.CourtView;
 import com.huizetime.basketball.widget.ScoreView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class WatchLoggingActivity extends AppCompatActivity implements MainView, CourtView.OnPointClickListener {
 
@@ -73,7 +83,15 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
     private TextView mButton;//按钮 暂停,开始...
     //事件1/2
     private EventBean mEventBean1, mEventBean2;
+    //fragment   1.prepare,2.process,3.team,4.end
 
+    private RootPrepareFragment mPrepareFragment;
+    private RootProcessFragment mProcessFragment;
+    private RootTeamFragment mTeamFragment;
+    private RootEndFragment mEndFragment;
+    private List<Fragment> mFragmentList;
+    private int mLastFragment;//设置之后的页码
+    private int mUpFragment;//未改变之前的页码,当返回时使用
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,10 +105,51 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
         initData();
         findView();
         initView();
+        initFragment();
         setData();
         ToolbarUtils.init(this, R.string.watch_log, mPresenter);
     }
 
+    //初始化fragment
+    private void initFragment() {
+        mFragmentList = new ArrayList<>();
+        RootBaseFragment.mActivity = this;
+
+        mPrepareFragment = new RootPrepareFragment();
+        mProcessFragment = new RootProcessFragment();
+        mTeamFragment = new RootTeamFragment();
+        mEndFragment = new RootEndFragment();
+
+        mFragmentList.add(mPrepareFragment);
+        mFragmentList.add(mProcessFragment);
+        mFragmentList.add(mTeamFragment);
+        mFragmentList.add(mEndFragment);
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction
+                .add(R.id.frameLayout, mPrepareFragment)
+                .add(R.id.frameLayout, mProcessFragment)
+                .add(R.id.frameLayout, mTeamFragment)
+                .add(R.id.frameLayout, mEndFragment)
+                .detach(mProcessFragment)
+                .detach(mTeamFragment)
+                .detach(mEndFragment)
+                .attach(mPrepareFragment).commit();
+    }
+
+    //指定显示fragment
+    public void showFragment(int pos) {
+        if (mLastFragment == pos) {
+            return;
+        } else {
+            getSupportFragmentManager().beginTransaction()
+                    .attach(mFragmentList.get(pos))
+                    .detach(mFragmentList.get(mLastFragment))
+                    .commit();
+        }
+        mUpFragment = mLastFragment;
+        mLastFragment = pos;
+    }
 
     private void assignViews() {
         mAName = (TextView) findViewById(R.id.a_name);
@@ -161,6 +220,7 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
 
                 break;
         }
+
     }
 
 
@@ -417,6 +477,7 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
         startActivity(intent);
     }
 
+
     private void toSign() {
         Intent intent = new Intent(this, SignActivity.class);
         startActivity(intent);
@@ -428,4 +489,16 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
         mPresenter.destroy();
     }
 
+
+    public int getUpFragment() {
+        return mUpFragment;
+    }
+
+    public void setLastFragment(int pos) {
+        this.mLastFragment = pos;
+    }
+
+    public int getLastFragment() {
+        return mLastFragment;
+    }
 }
