@@ -9,13 +9,14 @@ public class ConstantUtils {
     public static final int LEFT = 0;
     public static final int RIGHT = 1;
     //暂停/换人
+    public static final int NO = -1;
     public static final int TING = 0;
     public static final int HUAN = 1;
     //fragment
-    public static final int FRAGMENT_PREPARE=0;
-    public static final int FRAGMENT_PROCESS=1;
-    public static final int FRAGMENT_TEAM=2;
-    public static final int FRAGMENT_END=3;
+    public static final int FRAGMENT_PREPARE = 0;
+    public static final int FRAGMENT_PROCESS = 1;
+    public static final int FRAGMENT_TEAM = 2;
+    public static final int FRAGMENT_END = 3;
 
     //广播action
     public static final String ACTION_A_SCORE = "com.huizetime.basketball.a_score";//A队得分 左边得分

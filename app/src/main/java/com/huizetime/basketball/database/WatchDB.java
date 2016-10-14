@@ -3,18 +3,16 @@ package com.huizetime.basketball.database;
 import com.orm.SugarRecord;
 import com.orm.dsl.Column;
 
-import java.util.Objects;
-
 /**
  * Created by water_fairy on 2016/9/29.
  */
 
 public class WatchDB extends SugarRecord {
-    public static final int STATE_NO_LOG = 1;
+    public static final int STATE_NO_LOG = 0;
     public static final int STATE_PAUSE = 1;
-    public static final int STATE_LOGGING = 1;
-    public static final int STATE_END = 1;
-
+    public static final int STATE_LOGGING = 2;
+    public static final int STATE_END = 3;
+    //比赛结果
     public static final int RESULT_A = 0;
     public static final int RESULT_B = 1;
 
@@ -41,4 +39,84 @@ public class WatchDB extends SugarRecord {
     private int resultType;//结果类型
     @Column(unique = false, name = "result")
     private int result;//赛事结果
+
+    public int getWatchId() {
+        return watchId;
+    }
+
+    public void setWatchId(int watchId) {
+        this.watchId = watchId;
+    }
+
+    public String getWatchName() {
+        return watchName;
+    }
+
+    public void setWatchName(String watchName) {
+        this.watchName = watchName;
+    }
+
+    public int getaTeamId() {
+        return aTeamId;
+    }
+
+    public void setaTeamId(int aTeamId) {
+        this.aTeamId = aTeamId;
+    }
+
+    public int getbTeamId() {
+        return bTeamId;
+    }
+
+    public void setbTeamId(int bTeamId) {
+        this.bTeamId = bTeamId;
+    }
+
+    public long getTime() {
+        return time;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
+
+    public int getSegmentTime() {
+        return segmentTime;
+    }
+
+    public void setSegmentTime(int segmentTime) {
+        this.segmentTime = segmentTime;
+    }
+
+    public int getSegment() {
+        return segment;
+    }
+
+    public void setSegment(int segment) {
+        this.segment = segment;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
+    public int getResultType() {
+        return resultType;
+    }
+
+    public void setResultType(int resultType) {
+        this.resultType = resultType;
+    }
+
+    public int getResult() {
+        return result;
+    }
+
+    public void setResult(int result) {
+        this.result = result;
+    }
 }

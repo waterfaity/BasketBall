@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.huizetime.basketball.R;
 import com.huizetime.basketball.adapter.WatchListAdapter;
 import com.huizetime.basketball.bean.WatchBean;
+import com.huizetime.basketball.database.DBUtils;
 import com.huizetime.basketball.fresh.PullToRefreshLayout;
 import com.huizetime.basketball.fresh.view.PullRefreshListView;
 import com.huizetime.basketball.popup.PopupLoading;
@@ -64,6 +65,10 @@ public class WatchListActivity extends AppCompatActivity implements WatchListVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_watch_list);
+        {
+//            测试
+            DBUtils.insertWatchDB();
+        }
         initBTAddress();
         findView();
         initView();

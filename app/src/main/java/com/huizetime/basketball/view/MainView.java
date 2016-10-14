@@ -63,7 +63,7 @@ public interface MainView {
      * @param which
      * @param state
      */
-    void setATeamEvent(int which, int state);
+    void setTeamEventState(int which, int state);
 
     /**
      * 设置A队犯规次数
@@ -110,4 +110,5 @@ public interface MainView {
      */
     void setEvent(EventBean event2);
 
+    int getWatchId();
 }

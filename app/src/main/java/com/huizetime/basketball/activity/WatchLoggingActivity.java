@@ -93,6 +93,8 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
     private int mLastFragment;//设置之后的页码
     private int mUpFragment;//未改变之前的页码,当返回时使用
 
+    private int mWatchId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,7 +107,7 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
         initData();
         findView();
         initView();
-        initFragment();
+        initFragment();//130e17
         setData();
         ToolbarUtils.init(this, R.string.watch_log, mPresenter);
     }
@@ -186,7 +188,7 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
     }
 
     private void initData() {
-
+        mWatchId = getIntent().getIntExtra("watchId", 0);
         mPresenter = new MainPresenter(this);
         mPresenter.initData();
     }
@@ -320,11 +322,15 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
      * @param state
      */
     @Override
-    public void setATeamEvent(int which, int state) {
+    public void setTeamEventState(int which, int state) {
+
         mATingText.setVisibility(View.GONE);
         mBTingText.setVisibility(View.GONE);
         mAHuanText.setVisibility(View.GONE);
         mBHuanText.setVisibility(View.GONE);
+        if (state == ConstantUtils.NO) {
+            return;
+        }
         if (which == ConstantUtils.LEFT) {
             if (state == ConstantUtils.TING) {
                 mATingText.setVisibility(View.VISIBLE);
@@ -499,6 +505,13 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
     }
 
     public int getLastFragment() {
+
         return mLastFragment;
     }
+
+    @Override
+    public int getWatchId() {
+        return mWatchId;
+    }
+
 }

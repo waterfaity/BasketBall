@@ -9,9 +9,14 @@ import android.content.IntentFilter;
 import com.huizetime.basketball.application.MyApp;
 import com.huizetime.basketball.bean.tv.TVScoreBean;
 import com.huizetime.basketball.bean.tv.TVSignBean;
+import com.huizetime.basketball.database.TeamDB;
+import com.huizetime.basketball.database.WatchDB;
 import com.huizetime.basketball.manager.TVDataSendManager;
 import com.huizetime.basketball.presenter.MainPresenter;
 import com.huizetime.basketball.utils.ConstantUtils;
+import com.orm.SugarRecord;
+
+import java.util.List;
 
 /**
  * Created by water_fairy on 2016/9/26.
@@ -30,7 +35,7 @@ public class MainModelSimple implements MainModel {
     }
 
     @Override
-    public void initData() {
+    public void initData(int watchId) {
 
         //初始化数据传输管理
         mTVDataSendManager = MyApp.getApp().getTVDataSendManager();
@@ -43,7 +48,32 @@ public class MainModelSimple implements MainModel {
         intentFilter.addAction(ConstantUtils.ACTION_SEGMENT);
         intentFilter.addAction(ConstantUtils.ACTION_STOP);
         mActivity.registerReceiver(mDataReceiver, intentFilter);
+        //初始化比赛数据 从数据库取得数据
+        List<WatchDB> watchDBs = SugarRecord.find(WatchDB.class, "watchId", watchId + "");
+        if (watchDBs != null && watchDBs.size() == 1) {
+            WatchDB watchDB = watchDBs.get(0);
+            initData(watchDB);
+        }
     }
+
+    //由比赛信息,初始化界面
+    private void initData(WatchDB watchDB) {
+//        int aTeamId = watchDB.getaTeamId();
+//        int bTeamId = watchDB.getbTeamId();
+
+        List<TeamDB> teamDBs = SugarRecord.find(TeamDB.class, "watchId", watchDB.getWatchId() + "");
+        if (teamDBs != null && teamDBs.size() == 2) {
+            TeamDB teamDB1 = teamDBs.get(0);
+            TeamDB teamDB2 = teamDBs.get(1);
+            if (teamDB1.getPosition() == TeamDB.LEFT) {
+                mPresenter.displayData(watchDB, teamDB1, teamDB2);
+            } else {
+                mPresenter.displayData(watchDB, teamDB2, teamDB1);
+            }
+        }
+
+    }
+
 
     @Override
     public void connect() {

@@ -4,10 +4,15 @@ import com.orm.SugarRecord;
 import com.orm.dsl.Column;
 import com.orm.dsl.Table;
 
+import java.io.Serializable;
+
 /**
  * Created by water_fairy on 2016/9/23.
  */
-public class EventDB extends SugarRecord {
+public class EventDB extends SugarRecord implements Serializable {
+    public EventDB() {
+    }
+
     //针对boolean
     public static final int YES = 1;
     public static final int NO = 0;

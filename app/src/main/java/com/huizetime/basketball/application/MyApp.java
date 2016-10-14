@@ -1,13 +1,17 @@
 package com.huizetime.basketball.application;
 
+import android.app.Application;
+import android.content.res.Configuration;
+
 import com.huizetime.basketball.manager.BTManager;
 import com.huizetime.basketball.manager.TVDataSendManager;
 import com.orm.SugarApp;
+import com.orm.SugarContext;
 
 /**
  * Created by water_fairy on 2016/9/22.
  */
-public class MyApp extends SugarApp {
+public class MyApp extends SugarApp{
 
     private BTManager btManager;
     private static MyApp myApp;
@@ -18,6 +22,10 @@ public class MyApp extends SugarApp {
 
 
     private int mTVCurrentPage = PAGE_CONNECT;
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
 
     @Override
     public void onCreate() {
@@ -49,6 +57,10 @@ public class MyApp extends SugarApp {
     }
 
     public void setTVCurrentPage(int mTVCurrentPage) {
+
+
         this.mTVCurrentPage = mTVCurrentPage;
     }
+
+
 }

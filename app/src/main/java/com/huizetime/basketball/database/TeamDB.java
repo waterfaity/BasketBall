@@ -8,8 +8,8 @@ import com.orm.dsl.Column;
  */
 
 public class TeamDB extends SugarRecord {
-    private final int LEFT = 0;
-    private final int RIGHT = 1;
+    public static final int LEFT = 0;
+    public static final int RIGHT = 1;
 
     @Column(unique = false, name = "watchId")
     private int watchId;//关联赛事
@@ -30,5 +30,75 @@ public class TeamDB extends SugarRecord {
     @Column(unique = false, name = "position")
     private int position;//队伍位置(左,右)
 
+    public int getWatchId() {
+        return watchId;
+    }
 
+    public void setWatchId(int watchId) {
+        this.watchId = watchId;
+    }
+
+    public int getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(int teamId) {
+        this.teamId = teamId;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public String getTeamShortName() {
+        return teamShortName;
+    }
+
+    public void setTeamShortName(String teamShortName) {
+        this.teamShortName = teamShortName;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getStopTimes() {
+        return stopTimes;
+    }
+
+    public void setStopTimes(int stopTimes) {
+        this.stopTimes = stopTimes;
+    }
+
+    public int getFoulTimes() {
+        return foulTimes;
+    }
+
+    public void setFoulTimes(int foulTimes) {
+        this.foulTimes = foulTimes;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
 }

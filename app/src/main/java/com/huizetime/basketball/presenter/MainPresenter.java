@@ -8,10 +8,13 @@ import com.huizetime.basketball.bean.tv.TVData;
 import com.huizetime.basketball.bean.tv.TVEventBean;
 import com.huizetime.basketball.bean.tv.TVScoreBean;
 import com.huizetime.basketball.bean.tv.TVSignBean;
+import com.huizetime.basketball.database.TeamDB;
+import com.huizetime.basketball.database.WatchDB;
 import com.huizetime.basketball.listener.OnBelClickListener;
 import com.huizetime.basketball.manager.ConnectManager;
 import com.huizetime.basketball.model.MainModel;
 import com.huizetime.basketball.model.MainModelSimple;
+import com.huizetime.basketball.utils.ConstantUtils;
 import com.huizetime.basketball.utils.DialogUtils;
 import com.huizetime.basketball.view.MainView;
 
@@ -36,11 +39,11 @@ public class MainPresenter implements MainPresenterListener {
 
     @Override
     public void initData() {
-        mModel.initData();
+        mModel.initData(mView.getWatchId());
     }
 
     @Override
-    public void setWatchInfo() {
+    public void sendWatchInfo() {
         mModel.sendWatchInfo(100, "上海圣杯之战", "梦之队", "星之队");
     }
 
@@ -117,6 +120,19 @@ public class MainPresenter implements MainPresenterListener {
     @Override
     public void destroy() {
         mModel.destroy();
+    }
+
+    @Override
+    public void displayData(WatchDB watchDB, TeamDB aTeam, TeamDB bTeam) {
+        mView.setTeamName(aTeam.getTeamName(), bTeam.getTeamName());
+        mView.setScore(aTeam.getScore(), bTeam.getScore());
+        mView.setSegment(watchDB.getSegment() + "");
+        mView.setTime("12:00");
+        mView.setTeamEventState(1, ConstantUtils.NO);
+
+        mView.setATeamFoul(aTeam.getFoulTimes());
+
+
     }
 
 }
