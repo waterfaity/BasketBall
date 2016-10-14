@@ -1,6 +1,7 @@
 package com.huizetime.basketball.database;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by water_fairy on 2016/10/14.
@@ -9,6 +10,10 @@ import java.util.Date;
 public class DBUtils {
     //测试
     public static void insertWatchDB() {
+        List<WatchDB> watchDBs = WatchDB.find(WatchDB.class, "watchId = ?", 1 + "");
+        if (watchDBs.size()>0){
+            return;
+        }
         WatchDB watchDB = new WatchDB();
         watchDB.setWatchId(1);
         watchDB.setaTeamId(110);

@@ -9,7 +9,7 @@ import com.huizetime.basketball.presenter.MainPresenter;
  */
 public interface MainModel {
     //初始化数据
-    void initData(int watchId);
+    void initData();
 
     //作为用户端连接
     void connect();
@@ -34,4 +34,7 @@ public interface MainModel {
 
     //界面销毁
     void destroy();
+
+    //录入中
+    void logIn();
 }

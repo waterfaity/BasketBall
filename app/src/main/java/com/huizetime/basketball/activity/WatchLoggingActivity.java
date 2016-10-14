@@ -93,7 +93,7 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
     private int mLastFragment;//设置之后的页码
     private int mUpFragment;//未改变之前的页码,当返回时使用
 
-    private int mWatchId;
+    private int mWatchId=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,11 +104,10 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
         mWidth = displayMetrics.widthPixels;
         Log.i(TAG, "onCreate:heightPixels " + displayMetrics.heightPixels);
         Log.i(TAG, "onCreate:widthPixels " + displayMetrics.widthPixels);
-        initData();
         findView();
         initView();
+        initData();
         initFragment();//130e17
-        setData();
         ToolbarUtils.init(this, R.string.watch_log, mPresenter);
     }
 
@@ -205,25 +204,6 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
         assignViews();
     }
 
-    private void setData() {
-        int tvPage = MyApp.getApp().getTVCurrentPage();
-
-        switch (tvPage) {
-            case MyApp.PAGE_CONNECT:
-                //未录入 未签到
-
-                break;
-            case MyApp.PAGE_SIGN:
-                //签到
-
-                break;
-            case MyApp.PAGE_EVENT:
-                //录入
-
-                break;
-        }
-
-    }
 
 
     public void onClick(View view) {

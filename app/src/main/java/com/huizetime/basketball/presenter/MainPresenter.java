@@ -1,9 +1,9 @@
 package com.huizetime.basketball.presenter;
 
 import android.app.Activity;
-import android.util.Log;
 
 import com.huizetime.basketball.activity.WatchLoggingActivity;
+import com.huizetime.basketball.application.MyApp;
 import com.huizetime.basketball.bean.tv.TVData;
 import com.huizetime.basketball.bean.tv.TVEventBean;
 import com.huizetime.basketball.bean.tv.TVScoreBean;
@@ -11,7 +11,6 @@ import com.huizetime.basketball.bean.tv.TVSignBean;
 import com.huizetime.basketball.database.TeamDB;
 import com.huizetime.basketball.database.WatchDB;
 import com.huizetime.basketball.listener.OnBelClickListener;
-import com.huizetime.basketball.manager.ConnectManager;
 import com.huizetime.basketball.model.MainModel;
 import com.huizetime.basketball.model.MainModelSimple;
 import com.huizetime.basketball.utils.ConstantUtils;
@@ -39,7 +38,24 @@ public class MainPresenter implements MainPresenterListener {
 
     @Override
     public void initData() {
-        mModel.initData(mView.getWatchId());
+        mModel.initData();
+        int tvPage = MyApp.getApp().getTVCurrentPage();
+
+        switch (tvPage) {
+            case MyApp.PAGE_CONNECT:
+                //未录入 未签到
+
+                break;
+            case MyApp.PAGE_SIGN:
+                //签到
+
+                break;
+            case MyApp.PAGE_EVENT:
+                //录入
+             mModel.logIn();
+                break;
+        }
+
     }
 
     @Override

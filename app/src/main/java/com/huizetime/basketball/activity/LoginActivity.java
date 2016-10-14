@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.huizetime.basketball.R;
 import com.huizetime.basketball.utils.PermissionUtils;
+import com.orm.SugarContext;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -20,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        SugarContext.init(this);
         //初始化权限
         PermissionUtils.requestPermission(this, PermissionUtils.REQUEST_LOCATION);
         TextView textView = (TextView) findViewById(R.id.login);

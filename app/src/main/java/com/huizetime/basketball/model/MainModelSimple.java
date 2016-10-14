@@ -35,7 +35,7 @@ public class MainModelSimple implements MainModel {
     }
 
     @Override
-    public void initData(int watchId) {
+    public void initData() {
 
         //初始化数据传输管理
         mTVDataSendManager = MyApp.getApp().getTVDataSendManager();
@@ -48,12 +48,7 @@ public class MainModelSimple implements MainModel {
         intentFilter.addAction(ConstantUtils.ACTION_SEGMENT);
         intentFilter.addAction(ConstantUtils.ACTION_STOP);
         mActivity.registerReceiver(mDataReceiver, intentFilter);
-        //初始化比赛数据 从数据库取得数据
-        List<WatchDB> watchDBs = SugarRecord.find(WatchDB.class, "watchId", watchId + "");
-        if (watchDBs != null && watchDBs.size() == 1) {
-            WatchDB watchDB = watchDBs.get(0);
-            initData(watchDB);
-        }
+
     }
 
     //由比赛信息,初始化界面
@@ -61,7 +56,7 @@ public class MainModelSimple implements MainModel {
 //        int aTeamId = watchDB.getaTeamId();
 //        int bTeamId = watchDB.getbTeamId();
 
-        List<TeamDB> teamDBs = SugarRecord.find(TeamDB.class, "watchId", watchDB.getWatchId() + "");
+        List<TeamDB> teamDBs = SugarRecord.find(TeamDB.class, "watchId = ?", watchDB.getWatchId() + "");
         if (teamDBs != null && teamDBs.size() == 2) {
             TeamDB teamDB1 = teamDBs.get(0);
             TeamDB teamDB2 = teamDBs.get(1);
@@ -119,6 +114,16 @@ public class MainModelSimple implements MainModel {
     @Override
     public void destroy() {
         mActivity.unregisterReceiver(mDataReceiver);
+    }
+
+    @Override
+    public void logIn() {
+//        //初始化比赛数据 从数据库取得数据
+//        List<WatchDB> watchDBs = WatchDB.find(WatchDB.class, "watchId = ?", watchId + "");
+//        if (watchDBs != null && watchDBs.size() == 1) {
+//            WatchDB watchDB = watchDBs.get(0);
+//            initData(watchDB);
+//        }
     }
 
     private BroadcastReceiver mDataReceiver = new BroadcastReceiver() {
