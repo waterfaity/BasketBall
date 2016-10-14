@@ -1,19 +1,13 @@
 package com.huizetime.basketball.fragment.prepare;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.huizetime.basketball.R;
+import com.huizetime.basketball.fragment.base.BaseFragment;
 
 /**
  * Created by water_fairy on 2016/10/13.
  */
 
-public class GiveUpFragment extends BasePrepareFragment {
+public class GiveUpFragment extends BaseFragment {
     {
         mResId = R.layout.fragment_first_player;
     }

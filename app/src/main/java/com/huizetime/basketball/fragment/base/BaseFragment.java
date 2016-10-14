@@ -1,4 +1,4 @@
-package com.huizetime.basketball.fragment.prepare;
+package com.huizetime.basketball.fragment.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,9 +9,12 @@ import android.view.ViewGroup;
 
 /**
  * Created by water_fairy on 2016/10/13.
+ * 管理阶段模块
+ * 如:准备阶段 (0准备首页,1比赛开始,2首发球员,3一方弃权,4球衣修改)
+ *
  */
 
-public abstract class BasePrepareFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
     protected int mResId;
     protected View mView;
 
@@ -30,4 +33,11 @@ public abstract class BasePrepareFragment extends Fragment {
     protected abstract void initData();
 
     protected abstract void initView();
+
+    protected void setFragment(int pos) {
+        ((RootBaseFragment) getParentFragment()).setCurrentFragment(pos);
+    }
+    protected void setBack() {
+        ((RootBaseFragment) getParentFragment()).setBack();
+    }
 }

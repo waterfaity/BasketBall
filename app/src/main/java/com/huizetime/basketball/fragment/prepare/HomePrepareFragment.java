@@ -4,18 +4,18 @@ package com.huizetime.basketball.fragment.prepare;
  */
 
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.huizetime.basketball.R;
-import com.huizetime.basketball.fragment.RootBaseFragment;
+import com.huizetime.basketball.fragment.base.BaseFragment;
+import com.huizetime.basketball.fragment.root.RootPrepareFragment;
 import com.huizetime.basketball.presenter.HomePreparePresenter;
 import com.huizetime.basketball.presenter.HomePreparePresenterListener;
 import com.huizetime.basketball.view.HomePrepareView;
 import com.huizetime.basketball.widget.MultiClothesView;
 
 
-public class HomePrepareFragment extends BasePrepareFragment implements HomePrepareView, View.OnClickListener {
+public class HomePrepareFragment extends BaseFragment implements HomePrepareView, View.OnClickListener {
     private HomePreparePresenterListener mPresenter;
 
     {
@@ -50,6 +50,7 @@ public class HomePrepareFragment extends BasePrepareFragment implements HomePrep
     @Override
     public void onClick(View view) {
         int id = view.getId();
+
         switch (id) {
             case R.id.watch_start:
                 //比赛开始
@@ -57,14 +58,14 @@ public class HomePrepareFragment extends BasePrepareFragment implements HomePrep
                 break;
             case R.id.first_players:
                 //首发球员
-                RootBaseFragment parentFragment = (RootBaseFragment) getParentFragment();
-                parentFragment.setCurrentFragment(1);
+                setFragment(RootPrepareFragment.PREPARE_FIRST_PLAYER);
                 break;
             case R.id.change_area:
                 //场地交换
                 break;
             case R.id.give_up:
                 //一方弃权
+                setFragment(RootPrepareFragment.PREPARE_GIVE_UP);
                 break;
             case R.id.cancellation:
                 //比赛作废

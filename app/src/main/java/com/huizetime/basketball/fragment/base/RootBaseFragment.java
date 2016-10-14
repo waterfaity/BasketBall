@@ -1,4 +1,4 @@
-package com.huizetime.basketball.fragment;
+package com.huizetime.basketball.fragment.base;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +15,11 @@ import java.util.List;
 
 /**
  * Created by water_fairy on 2016/10/13.
+ * 管理4大模块
+ * 1准备阶段
+ * 2进行阶段
+ * 3队伍事件
+ * 4结束阶段
  */
 
 public abstract class RootBaseFragment extends Fragment {
@@ -31,13 +36,11 @@ public abstract class RootBaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_root, container, false);
-        mFragmentList=new ArrayList<>();
+        mFragmentList = new ArrayList<>();
         initFragment();
-        initData();
         return mView;
     }
 
-    protected abstract void initData();
 
     protected void initFragment() {
         FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
@@ -64,10 +67,11 @@ public abstract class RootBaseFragment extends Fragment {
             return;
         } else {
             getChildFragmentManager().beginTransaction()
-                    .attach(mFragmentList.get(pos))
                     .detach(mFragmentList.get(mLastFragment))
+                    .attach(mFragmentList.get(pos))
                     .commit();
         }
+        isBack = false;
         mUpFragment = mLastFragment;
         mLastFragment = pos;
     }
@@ -75,8 +79,11 @@ public abstract class RootBaseFragment extends Fragment {
     protected void setBack() {
         //只允许返回一次
         if (mUpFragment == mLastFragment) return;
-        mLastFragment = mUpFragment;
+//        mLastFragment = mUpFragment;
+//        isBack = true;
         setCurrentFragment(mUpFragment);
     }
+
+    private boolean isBack;
 
 }

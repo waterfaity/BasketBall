@@ -44,15 +44,16 @@ public class ClothesView extends LinearLayout implements View.OnClickListener {
 
     public ClothesView(Context context) {
         super(context);
+
     }
 
     public ClothesView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        imgTopInLin = (int) getResources().getDimension(R.dimen.top_clothes_in_lin);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ClothesView);
         imgHeight = typedArray.getDimension(R.styleable.ClothesView_imgHeight, 10);
         imgWidth = typedArray.getDimension(R.styleable.ClothesView_imgWidth, 10);
         numSize = typedArray.getDimension(R.styleable.ClothesView_numSize, 20);
+        imgTopInLin = (int) getResources().getDimension(R.dimen.top_clothes_in_lin);
         String num = typedArray.getString(R.styleable.ClothesView_clothesNum);
         if (!TextUtils.isEmpty(num)) {
             clothesNum = Integer.parseInt(num);
@@ -61,17 +62,30 @@ public class ClothesView extends LinearLayout implements View.OnClickListener {
         if (!TextUtils.isEmpty(type)) {
             clothType = Integer.parseInt(type);
         }
+
+
         initView(context);
 
     }
 
+    public ClothesView(Context context, int type) {
+        this(context);
+        imgHeight = getResources().getDimension(R.dimen.height_clothes_real);
+        imgWidth = getResources().getDimension(R.dimen.width_clothes);
+        numSize = getResources().getDimension(R.dimen.text_size_clothes);
+        imgTopInLin = (int) getResources().getDimension(R.dimen.top_clothes_in_lin);
+        clothType = type;
+        initView(context);
+    }
+
     private void initView(Context context) {
+        removeAllViews();
         relativeLayout = new RelativeLayout(context);
         addView(relativeLayout);
         LinearLayout.LayoutParams layoutParams = (LayoutParams) relativeLayout.getLayoutParams();
         layoutParams.height = (int) imgHeight;
         layoutParams.width = (int) imgWidth;
-        layoutParams.gravity = Gravity.BOTTOM;
+        layoutParams.topMargin =imgTopInLin;
 
         //球衣
         imageView = new ImageView(context);

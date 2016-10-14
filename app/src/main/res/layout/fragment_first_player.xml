@@ -5,35 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <com.huizetime.basketball.widget.MultiClothesView
-            android:id="@+id/team_a"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_normal"
-            android:orientation="vertical"
-            app:imgHeight="@dimen/height_clothes_real"
-            app:imgWidth="@dimen/width_clothes"
-            app:numSize="40px" />
-
-        <com.huizetime.basketball.widget.MultiClothesView
-            android:id="@+id/team_b"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="@dimen/margin_normal"
-            android:layout_marginRight="@dimen/margin_normal"
-            android:orientation="vertical"
-            app:clothesType="2"
-            app:imgHeight="@dimen/height_clothes_real"
-            app:imgWidth="@dimen/width_clothes"
-            app:numSize="40px" />
-
-    </RelativeLayout>
+    <include layout="@layout/multi_clothes" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -56,7 +28,7 @@
             android:textSize="@dimen/text_size_button_first_fragment" />
 
         <TextView
-            android:id="@+id/first_players"
+            android:id="@+id/go_to_court"
             android:layout_width="@dimen/width_go_to_court_button"
             android:layout_height="@dimen/height_button_first_fragment"
             android:layout_marginLeft="@dimen/left_change_clothes_button"

@@ -63,4 +63,5 @@
     <dimen name="width_go_to_court_button">495px</dimen>
     <dimen name="width_back_in_fragment">230px</dimen>
     <dimen name="height_back_button_in_fragment">144px</dimen>
+    <dimen name="text_size_clothes">40px</dimen>
 </resources>
