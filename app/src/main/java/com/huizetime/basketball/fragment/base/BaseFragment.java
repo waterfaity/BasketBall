@@ -11,7 +11,6 @@ import android.view.ViewGroup;
  * Created by water_fairy on 2016/10/13.
  * 管理阶段模块
  * 如:准备阶段 (0准备首页,1比赛开始,2首发球员,3一方弃权,4球衣修改)
- *
  */
 
 public abstract class BaseFragment extends Fragment {
@@ -37,7 +36,13 @@ public abstract class BaseFragment extends Fragment {
     protected void setFragment(int pos) {
         ((RootBaseFragment) getParentFragment()).setCurrentFragment(pos);
     }
+
     protected void setBack() {
         ((RootBaseFragment) getParentFragment()).setBack();
     }
+
+    /**
+     * 数据还原,下次使用
+     */
+    public abstract void reverseData();
 }

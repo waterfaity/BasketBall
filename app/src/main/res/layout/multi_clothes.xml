@@ -6,12 +6,16 @@
     android:orientation="vertical">
 
 
+
     <com.huizetime.basketball.widget.MultiClothesView
         android:id="@+id/team_a"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_normal"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        app:imgHeight="@dimen/height_clothes_real"
+        app:imgWidth="@dimen/width_clothes"
+        app:numSize="40px" />
 
     <com.huizetime.basketball.widget.MultiClothesView
         android:id="@+id/team_b"
@@ -20,7 +24,11 @@
         android:layout_alignParentRight="true"
         android:layout_marginLeft="@dimen/margin_normal"
         android:layout_marginRight="@dimen/margin_normal"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        app:clothesType="2"
+        app:imgHeight="@dimen/height_clothes_real"
+        app:imgWidth="@dimen/width_clothes"
+        app:numSize="40px" />
 
 
 </RelativeLayout>

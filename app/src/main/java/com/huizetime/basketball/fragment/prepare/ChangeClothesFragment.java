@@ -41,6 +41,14 @@ public class ChangeClothesFragment extends BaseFragment implements View.OnClickL
         mTeamBClothes.SetCanSelectNum(0);
     }
 
+    /**
+     * 数据还原,下次使用
+     */
+    @Override
+    public void reverseData() {
+
+    }
+
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.back_int_fragment) {

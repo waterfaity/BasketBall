@@ -83,17 +83,22 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
     private TextView mButton;//按钮 暂停,开始...
     //事件1/2
     private EventBean mEventBean1, mEventBean2;
-    //fragment   1.prepare,2.process,3.team,4.end
+    //fragment   10.prepare,1.process,2.team,3.end
+    public static final int FRAGMENT_PREPARE = 0;
+    public static final int FRAGMENT_PROCESS = 1;
+    public static final int FRAGMENT_TEAM = 2;
+    public static final int FRAGMENT_END = 3;
 
     private RootPrepareFragment mPrepareFragment;
     private RootProcessFragment mProcessFragment;
     private RootTeamFragment mTeamFragment;
     private RootEndFragment mEndFragment;
+
     private List<Fragment> mFragmentList;
     private int mLastFragment;//设置之后的页码
     private int mUpFragment;//未改变之前的页码,当返回时使用
 
-    private int mWatchId=1;
+    private int mWatchId = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,6 +144,7 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
     }
 
     //指定显示fragment
+    @Override
     public void showFragment(int pos) {
         if (mLastFragment == pos) {
             return;
@@ -205,7 +211,6 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
     }
 
 
-
     public void onClick(View view) {
 
     }
@@ -247,8 +252,12 @@ public class WatchLoggingActivity extends AppCompatActivity implements MainView,
      */
     @Override
     public void setScore(int aScore, int bScore) {
-        mAScore.setScore(aScore);
-        mBScore.setScore(bScore);
+        if (aScore != -1) {
+            mAScore.setScore(aScore);
+        }
+        if (bScore != -1) {
+            mBScore.setScore(bScore);
+        }
     }
 
     /**

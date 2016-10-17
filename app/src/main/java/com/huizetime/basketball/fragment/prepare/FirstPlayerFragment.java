@@ -44,6 +44,14 @@ public class FirstPlayerFragment extends BaseFragment implements View.OnClickLis
     }
 
     /**
+     * 数据还原,下次使用
+     */
+    @Override
+    public void reverseData() {
+
+    }
+
+    /**
      * Called when a view has been clicked.
      *
      * @param v The view that was clicked.

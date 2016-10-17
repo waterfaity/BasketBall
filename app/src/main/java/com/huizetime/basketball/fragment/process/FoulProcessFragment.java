@@ -1,15 +1,16 @@
-package com.huizetime.basketball.fragment.prepare;
+package com.huizetime.basketball.fragment.process;
 
 import com.huizetime.basketball.R;
 import com.huizetime.basketball.fragment.base.BaseFragment;
+import com.huizetime.basketball.fragment.root.RootProcessFragment;
 
 /**
- * Created by water_fairy on 2016/10/13.
+ * Created by water_fairy on 2016/10/17.
  */
 
-public class GiveUpFragment extends BaseFragment {
+public class FoulProcessFragment extends BaseFragment {
     {
-        mResId = R.layout.fragment_give_up;
+        mResId = R.layout.fragment_foul;
     }
 
     @Override

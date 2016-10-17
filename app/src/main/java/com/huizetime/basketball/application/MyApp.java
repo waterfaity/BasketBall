@@ -11,17 +11,19 @@ import com.orm.SugarContext;
 /**
  * Created by water_fairy on 2016/9/22.
  */
-public class MyApp extends SugarApp{
+public class MyApp extends SugarApp {
 
     private BTManager btManager;
     private static MyApp myApp;
     private TVDataSendManager tvDataSendManager;
+    private int watchId;//比赛id
     public static final int PAGE_CONNECT = 1;
     public static final int PAGE_SIGN = 2;
     public static final int PAGE_EVENT = 3;
 
 
     private int mTVCurrentPage = PAGE_CONNECT;
+
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -62,5 +64,11 @@ public class MyApp extends SugarApp{
         this.mTVCurrentPage = mTVCurrentPage;
     }
 
+    public int getWatchId() {
+        return watchId;
+    }
 
+    public void setWatchId(int watchId) {
+        this.watchId = watchId;
+    }
 }

@@ -9,8 +9,11 @@ import android.widget.TextView;
 import com.huizetime.basketball.R;
 import com.huizetime.basketball.fragment.base.BaseFragment;
 import com.huizetime.basketball.fragment.root.RootPrepareFragment;
+import com.huizetime.basketball.listener.OnBelClickListener;
 import com.huizetime.basketball.presenter.HomePreparePresenter;
 import com.huizetime.basketball.presenter.HomePreparePresenterListener;
+import com.huizetime.basketball.utils.DialogUtils;
+import com.huizetime.basketball.utils.StringUtils;
 import com.huizetime.basketball.view.HomePrepareView;
 import com.huizetime.basketball.widget.MultiClothesView;
 
@@ -62,6 +65,7 @@ public class HomePrepareFragment extends BaseFragment implements HomePrepareView
                 break;
             case R.id.change_area:
                 //场地交换
+                mPresenter.changeArea();
                 break;
             case R.id.give_up:
                 //一方弃权
@@ -69,17 +73,31 @@ public class HomePrepareFragment extends BaseFragment implements HomePrepareView
                 break;
             case R.id.cancellation:
                 //比赛作废
+                mPresenter.cancellation();
                 break;
         }
     }
 
     @Override
     protected void initData() {
-        mPresenter = new HomePreparePresenter(getActivity());
+        mPresenter = new HomePreparePresenter(this);
     }
 
     @Override
     protected void initView() {
 
+    }
+
+    /**
+     * 数据还原,下次使用
+     */
+    @Override
+    public void reverseData() {
+
+    }
+
+    @Override
+    public void startWatch() {
+        setFragment(RootPrepareFragment.PREPARE_START_WATCH);
     }
 }

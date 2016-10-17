@@ -605,8 +605,6 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/left_margin"
-        android:layout_marginRight="@dimen/left_margin"
         android:layout_marginTop="@dimen/top_part3" />
 
 </LinearLayout>

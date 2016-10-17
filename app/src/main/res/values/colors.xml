@@ -38,5 +38,7 @@
     <color name="line_score">#4c474f</color>
     <color name="bg_dialog">#cc130e17</color>
     <color name="line_dialog">#888196</color>
+    <color name="bg_start_watch_team_name">#363339</color>
+    <color name="line_start_watch">#2a272c</color>
 
 </resources>

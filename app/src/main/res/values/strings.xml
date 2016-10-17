@@ -33,4 +33,7 @@
     <string name="chang_clothes_num">球衣修改</string>
     <string name="go_to_court">上场</string>
     <string name="back">返回</string>
+    <string name="is_change_area">是否交换双方的场地？</string>
+    <string name="cancellation">比赛作废确认</string>
+    <string name="check_palyer">请选择球员</string>
 </resources>

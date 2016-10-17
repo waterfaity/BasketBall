@@ -65,4 +65,17 @@
     <dimen name="width_back_in_fragment">230px</dimen>
     <dimen name="height_back_button_in_fragment">144px</dimen>
     <dimen name="text_size_clothes">40px</dimen>
+    <dimen name="height_fragment_start_watch_team">77px</dimen>
+    <dimen name="width_button_start_watch">260px</dimen>
+    <dimen name="height_fragment_get_ball">226px</dimen>
+    <dimen name="padding_button_start_watch">20px</dimen>
+    <dimen name="top_start_watch_lin">45px</dimen>
+    <dimen name="left_start_watch_team_name">45px</dimen>
+    <dimen name="radius_button_start_watch_rel">130px</dimen>
+    <dimen name="height_button_start_watch_fragment">308px</dimen>
+    <dimen name="width_button_start_watch_in">256px</dimen>
+    <dimen name="text_size_button_start_watch_fragment">31px</dimen>
+    <dimen name="right_get_ball_start_watch_lin">160px</dimen>
+    <dimen name="text_size_get_ball">28px</dimen>
+    <dimen name="width_get_ball_little_button">89px</dimen>
 </resources>

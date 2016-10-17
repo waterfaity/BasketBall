@@ -1,6 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/multi_clothes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_margin"
+        android:layout_marginRight="@dimen/left_margin" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_button_start_watch_fragment"
+        android:layout_marginTop="@dimen/top_start_watch_lin"
+        android:background="@color/bg_main">
+
+        <LinearLayout
+            android:id="@+id/team_name_lin_temp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="@color/line_start_watch" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_fragment_start_watch_team">
+
+                <TextView
+                    android:id="@+id/a_team_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/bg_start_watch_team_name"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/left_start_watch_team_name"
+                    android:text="梦之队"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_button_start_watch_fragment" />
+
+                <TextView
+                    android:id="@+id/b_team_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/bg_start_watch_team_name"
+                    android:gravity="right|center_vertical"
+                    android:paddingRight="@dimen/left_start_watch_team_name"
+                    android:text="星之队"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_button_start_watch_fragment" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="@color/line_start_watch" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_fragment_get_ball"
+            android:layout_below="@+id/team_name_lin_temp">
+
+            <RelativeLayout
+                android:id="@+id/a_get_ball"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/gradient_get_ball_left">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/right_get_ball_start_watch_lin"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/width_get_ball_little_button"
+                        android:src="@drawable/get_ball_little_button" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_normal"
+                        android:text="获取球权"
+                        android:textColor="#bdb4c6"
+                        android:textSize="@dimen/text_size_get_ball" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/b_get_ball"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/gradient_get_ball_right">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/right_get_ball_start_watch_lin"
+                    android:gravity="center_vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="获取球权"
+                        android:textColor="#bdb4c6"
+                        android:textSize="@dimen/text_size_get_ball" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/width_get_ball_little_button"
+                        android:layout_marginLeft="@dimen/margin_normal"
+                        android:scaleX="-1"
+                        android:src="@drawable/get_ball_little_button" />
+
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_alignParentBottom="true"
+            android:background="#2a272c" />
+
+        <LinearLayout
+            android:layout_width="@dimen/width_button_start_watch"
+            android:layout_height="@dimen/width_button_start_watch"
+            android:layout_centerInParent="true"
+            android:background="@drawable/circle_start_watch" />
+
+        <LinearLayout
+            android:layout_width="6px"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/line_start_watch" />
+
+        <RelativeLayout
+            android:layout_width="@dimen/width_button_start_watch_in"
+            android:layout_height="@dimen/width_button_start_watch_in"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_start_watch_rel"
+            android:clickable="true"
+            android:padding="@dimen/padding_button_start_watch">
+
+            <com.huizetime.basketball.widget.StartWatchCheckBox
+                android:id="@+id/start_watch_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
 
 </LinearLayout>

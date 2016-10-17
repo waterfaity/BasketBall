@@ -1,5 +1,8 @@
 package com.huizetime.basketball.database;
 
+import com.google.gson.internal.Primitives;
+import com.orm.SugarRecord;
+
 import java.util.Date;
 import java.util.List;
 
@@ -7,11 +10,28 @@ import java.util.List;
  * Created by water_fairy on 2016/10/14.
  */
 
-public class DBUtils {
+public class DBUtils<T> {
+    /**
+     * 获取一个数据
+     *
+     * @param aClass
+     * @param param
+     * @param content
+     * @param <T>
+     * @return
+     */
+    public static <T> T findOne(Class<T> aClass, String param, String content) {
+        List list = SugarRecord.find(aClass, param + " = ?", content);
+        if (list != null && list.size() == 1) {
+            return Primitives.wrap(aClass).cast(list.get(0));
+        }
+        return null;
+    }
+
     //测试
     public static void insertWatchDB() {
         List<WatchDB> watchDBs = WatchDB.find(WatchDB.class, "watchId = ?", 1 + "");
-        if (watchDBs.size()>0){
+        if (watchDBs.size() > 0) {
             return;
         }
         WatchDB watchDB = new WatchDB();

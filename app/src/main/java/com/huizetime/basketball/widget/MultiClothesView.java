@@ -97,8 +97,7 @@ public class MultiClothesView extends LinearLayout {
     private OnClickListener onClothesClick = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (onClothesClickListener != null)
-                onClothesClickListener.onClothesClick(MultiClothesView.this, (ClothesView) v);
+
             if (selectNum == 0) {
                 return;
             }
@@ -147,6 +146,8 @@ public class MultiClothesView extends LinearLayout {
                 }
             }
             lastPos = tag;
+            if (onClothesClickListener != null)
+                onClothesClickListener.onClothesClick(MultiClothesView.this, (ClothesView) v);
         }
     };
 

@@ -52,7 +52,7 @@ public class MainPresenter implements MainPresenterListener {
                 break;
             case MyApp.PAGE_EVENT:
                 //录入
-             mModel.logIn();
+                mModel.logIn();
                 break;
         }
 
@@ -124,7 +124,6 @@ public class MainPresenter implements MainPresenterListener {
             @Override
             public void onBelClick(boolean bel) {
                 if (bel) {
-
                     mView.back();
                 }
             }
@@ -151,4 +150,112 @@ public class MainPresenter implements MainPresenterListener {
 
     }
 
+    /**
+     * 设置Fragment
+     *
+     * @param pos
+     */
+    @Override
+    public void setFragment(int pos) {
+        mView.showFragment(pos);
+    }
+
+    /**
+     * 获取球权
+     *
+     * @param which     队伍 left,right
+     * @param playerNum 球员num(非id)
+     */
+    @Override
+    public void setGetBall(int which, int playerNum) {
+
+    }
+
+    /**
+     * 比赛作废
+     */
+    @Override
+    public void setCancellation() {
+
+    }
+
+    /**
+     * 小节
+     *
+     * @param segment
+     */
+    @Override
+    public void setSegment(int segment) {
+        mView.setSegment(segment + "");
+    }
+
+    /**
+     * 申请暂停
+     *
+     * @param which left,right
+     */
+    @Override
+    public void requestStop(int which) {
+        mView.setTeamEventState(which, ConstantUtils.TING);
+    }
+
+    /**
+     * 申请换人
+     *
+     * @param which
+     */
+    @Override
+    public void requestChangePlayer(int which) {
+        mView.setTeamEventState(which, ConstantUtils.HUAN);
+    }
+
+    /**
+     * B队得分
+     *
+     * @param score
+     */
+    @Override
+    public void setBScore(int score) {
+        mView.setScore(-1, score);
+    }
+
+    /**
+     * A队得分
+     *
+     * @param score
+     */
+    @Override
+    public void setAScore(int score) {
+        mView.setScore(score, -1);
+    }
+
+    /**
+     * 暂停次数
+     *
+     * @param which
+     * @param times
+     */
+    @Override
+    public void setStopTimes(int which, int times) {
+        if (which == ConstantUtils.LEFT) {
+            mView.setATeamFoul(times);
+        } else {
+            mView.setBTeamFoul(times);
+        }
+    }
+
+    /**
+     * 犯规次数
+     *
+     * @param which
+     * @param times
+     */
+    @Override
+    public void setFoulTimes(int which, int times) {
+        if (which == ConstantUtils.LEFT) {
+            mView.setATeamFoul(times);
+        } else {
+            mView.setATeamFoul(times);
+        }
+    }
 }

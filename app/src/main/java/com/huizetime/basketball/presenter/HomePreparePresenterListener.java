@@ -5,4 +5,8 @@ package com.huizetime.basketball.presenter;
  */
 public interface HomePreparePresenterListener {
     void startWatch();
+
+    void changeArea();
+
+    void cancellation();
 }

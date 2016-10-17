@@ -9,6 +9,9 @@ import java.io.File;
  */
 public interface MainView {
 
+    //指定显示fragment
+    void showFragment(int pos);
+
     void back();
 
     /**
